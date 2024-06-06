@@ -1,0 +1,143 @@
+@charset "UTF-8";
+
+/* 
+main color : #ffff95, yellow
+sub color : #999 
+*/
+
+#wrapper {
+	
+	width : 100%;
+	height : 800px;
+	margin : 200px auto;
+	
+}
+
+header {margin : 100px auto 50px;}
+header h1 {
+	
+	font-size : 3rem;
+	text-shadow : 2px 2px yellow;
+	
+}
+
+#logo {
+
+	text-align : center;
+	color : yellow;
+	
+}
+#logo a {
+	
+	text-decoration : none;
+	color : black;
+	font-weight : bold;
+	
+}
+
+#container {
+	
+	width : 80%;
+	margin : 0 auto;
+	
+}
+
+#loginForm {
+	
+	width : 80%;
+	height : 200px;
+	margin : 0 auto;
+	
+}
+#loginForm .inputRow {
+	
+	width : 400px;
+	height : 50px;
+	margin : 0 auto;
+	
+}
+#loginForm .inputRow input{
+	
+	width : 100%;
+	height : 100%;
+	margin : 0 auto;
+	border-radius : 4px;
+	
+}
+#loginForm #log_login {
+	
+	width : 400px;
+	height : 50px;
+	margin : 0 auto;
+	
+}
+#loginForm #log_login input {
+	
+	width : 100%;
+	height : 100%;
+	margin : 50px 4px 10px;
+	background-color : #ffff95;
+	border-radius : 4px;
+	
+}
+
+.mid {
+	
+	width : 408px;
+	margin : 0 auto;
+	
+}
+.mid ul {
+	
+	list-style : none;
+	text-align : center;
+	margin-left : -40px;
+	
+}
+.mid ul a {
+	
+	text-decoration : none;
+	color : #999;
+	
+}
+.mid ul li {
+	
+	display : inline-block;
+	font-size : 14px;
+	
+}
+
+footer {
+	
+	width : 80%;
+	height : 150px;
+	margin: 180px auto 0;
+		
+}
+.footerInner {
+	
+	width : 70%;
+	margin : 0 auto;
+	
+}
+.footerInner #fiUp {
+	
+	list-style : none;
+	text-align : center;
+	margin-left : -7.5%;
+	
+}
+.footerInner #fiUp li a {
+	
+	text-decoration : none;
+	color : #999;
+	
+}
+.footerInner #fiUp li {display : inline-block;}
+.footerInner #fiDown {text-align : center;}
+.footerInner #fiDown span {
+	
+	text-shadow : 2px 2px yellow;
+	font-weight : bold;
+	
+}

@@ -1,0 +1,175 @@
+@charset "UTF-8";
+
+/* 헤더 css */
+
+ul {list-style : none;}
+
+a {
+	
+    text-decoration : none;
+    outline : none;
+    
+}
+
+.page {
+	
+    width : 1800px;
+    margin : 0 auto;
+    
+}
+
+header {
+	
+    width : 1900px;
+    height : 80px;
+    display : flex;
+    align-items : center;
+   /*  justify-content : space-between; */
+   
+}
+header h1 a {
+	
+	font-size : 32px;
+	color : black;
+	
+}
+header > h2 {
+	
+	margin-left : -20px;
+	height  : 60%;
+	
+}
+header ul {
+	
+	width :100%;
+	height : 100%;
+	display : flex;
+	justify-content : space-between;
+	
+}
+header ul > li {
+	
+	font-size :16px;
+	height : 100%;
+	display : flex;
+	align-items : center;
+	
+}
+
+.searchbar {
+	
+	/* margin-left  : 500px; */
+	margin  : 0 auto;
+	justify-content : space-between;
+	width  : 700px;
+	height : 50px;
+	align-items : center;
+	border  : 2px solid #ffcc00;
+	
+}
+.searchbar > input {
+	
+	width  : 630px;
+	height  : 25px;
+	padding : 12.5px 30px;
+	border : none;
+	border-radius : 0;
+	font-size : 16px;
+	
+}
+.searchbar > input:focus {outline  : none;}
+.searchbar > img {
+	
+	margin  : 0 auto;
+	position  : absolute;
+	top  : 30px;
+	right : 36%;
+	width : 25px;
+	height : 25px;
+	
+}
+
+nav {width  : 210px;}
+
+.page {position : relaitve;}
+.page #floatBar {
+	
+	width : 150px;
+	display : inline-block;
+	text-align : center;
+	position : absolute;
+	top : 150px;
+	right : 150px;
+	font-size : 0.9rem;
+	
+}
+
+#floatBar .float_1 {
+
+	border : 1px solid #ccc;
+	width : 150px;
+	margin-bottom : 5px;
+	padding-top : 5px;
+	font-size : 0.7rem;
+	
+}
+.float_1 ul {margin : 0 auto 5px;}
+.float_1 li {margin : 0 auto;}
+.float_1 #jjimList {
+	
+	width : fit-content;
+	height : 40px;
+	padding : 0;
+	
+}
+.float_1 #jjimList:hover {
+	
+	color : #ffcc00;
+	font-weight : bold;
+	
+}
+#floatBar .float_2 {
+	
+	border : 1px solid #ccc;
+	width : 150px;
+	margin-bottom : 5px;
+	
+}
+#floatBar .float_2 hr {
+	
+	width : 50%;
+	text-align : center;
+	border : 1px dashed #777;
+	
+}
+.float_2 .float_2_up {margin-top : 10px;}
+.float_2_down {margin-bottom : 10px;}
+.float_2_down ul {margin : 0 auto;}
+.float_2 .float_2_down li {margin : 0 auto;}
+.float_2 .float_2_down #noLately {color : #c9c9c9;}
+#floatBar .float_3 {
+	
+	border : 1px solid #ccc;
+	width : 150px;
+	
+}
+#floatBar button {
+	
+	width : 150px;
+	height : 60px;
+	border : none;
+	background : white;
+	color : #777;
+	padding : 20px 0;
+	font-size : 0.9rem;
+	cursor : pointer;
+	
+}
+#floatBar ul {
+	
+	width : 110px;
+	display : flex;
+	flex-direction : column;
+	padding-inline-start : 0;
+	
+}

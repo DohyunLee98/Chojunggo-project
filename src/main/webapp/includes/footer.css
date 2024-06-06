@@ -1,0 +1,64 @@
+@charset "UTF-8";
+
+footer {
+	
+	width : 99.8%;
+	
+	margin: 180px auto 0;
+	padding-top : 10px;
+	padding-bottom : 10px;
+	font-size : 14px;
+	background : #eee;
+	
+}
+footer hr {
+	
+	width : 100%;
+	border : 1px solid white;
+	
+}
+.footerInner {
+	
+	width : 98%;
+	margin-left : 2%;
+	
+}
+.footerInner #fiUp {
+	
+	list-style : none;
+	padding : 0;
+	
+}
+.footerInner #fiUp li a {
+	
+	text-decoration : none;
+	color : #999;
+	
+}
+#fiUp li span {
+	
+	font-weight : bold;
+	color : black;
+	
+}
+.footerInner #fiUp li {display : inline-block;}
+.firstInner p, .secondInner p {color : #aaa;}
+.firstInner #footerInfo {
+	
+	width : 85%;
+	float : left;
+	
+}
+.firstInner #hash {
+	
+	width : 15%;
+	float : right;
+	
+}
+.firstInner ul li {display : inline-block;}
+.firstInner #hash img {
+	
+	width : 16px;
+	height : 16px;
+	
+}
