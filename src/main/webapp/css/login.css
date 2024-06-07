@@ -5,6 +5,8 @@ main color : #ffff95, yellow
 sub color : #999 
 */
 
+body {height : 800px;}
+
 #wrapper {
 	
 	width : 100%;

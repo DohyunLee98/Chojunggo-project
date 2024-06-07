@@ -15,6 +15,7 @@
 	padding : 3px;
 	
 }
+.op:focus {outline : 2px solid #ffcc00;}
 
 </style>
 
