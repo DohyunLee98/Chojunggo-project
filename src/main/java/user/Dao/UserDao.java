@@ -39,7 +39,7 @@ public class UserDao {
 
 	public void insert(Connection conn, User user) throws SQLException {
 		try (PreparedStatement pstmt = 
-				conn.prepareStatement("insert into user values(?,?,?,?)")) {
+				conn.prepareStatement("insert into user values(?,?,?,?,?,?,?,?)")) {
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPwd());
 			pstmt.setString(3, user.getName());
@@ -53,7 +53,7 @@ public class UserDao {
 
 	public void update(Connection conn, User user) throws SQLException {
 		try (PreparedStatement pstmt = conn.prepareStatement(
-				"update user set name = ?, password = ? where userid = ?")) {
+				"update user set name = ?, pwd = ? name =? nickname =? address=? account =? location =? where userid = ?")) {
 			pstmt.setString(1, user.getId());
 			pstmt.setString(2, user.getPwd());
 			pstmt.setString(3, user.getName());
