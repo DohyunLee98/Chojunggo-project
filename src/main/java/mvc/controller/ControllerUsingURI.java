@@ -24,14 +24,14 @@ public class ControllerUsingURI extends HttpServlet {
 
     public void init() throws ServletException {
         String configFile = getInitParameter("configFile");
-        Properties prop = new Properties();
+        Properties prop = new Properties(); // properties : 성질, 특징
         String configFilePath = getServletContext().getRealPath(configFile);
         try (FileReader fis = new FileReader(configFilePath)) {
             prop.load(fis);
         } catch (IOException e) {
             throw new ServletException(e);
         }
-        Iterator keyIter = prop.keySet().iterator();
+        Iterator keyIter = prop.keySet().iterator(); // Iterator : 반복자
         while (keyIter.hasNext()) {
             String command = (String) keyIter.next();
             String handlerClassName = prop.getProperty(command);
@@ -67,6 +67,7 @@ public class ControllerUsingURI extends HttpServlet {
         if (handler == null) {
             handler = new NullHandler();
         }
+
         String viewPage = null;
         try {
             viewPage = handler.process(request, response);

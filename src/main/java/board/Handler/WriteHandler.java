@@ -28,12 +28,7 @@ public class WriteHandler implements CommandHandler {
 		Writer writer = (Writer) request.getSession(false).getAttribute("login");
 		
 		List<String> imageList = writeService.uploadImages(request, response, writer);
-		int i = 0;
-		while(i < imageList.size()) {
-			System.out.println("====");
-			System.out.println(imageList.get(i));
-			i++;
-		}
+
 		
 		return "/WEB-INF/view/showUploaded.jsp";
 	}
