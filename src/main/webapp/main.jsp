@@ -33,7 +33,7 @@
         
 		<div class = "body">
 			<a class = "banner">
-				<img src = "image/RHc.jpg">
+				<img src = "image/banner_1.png">
 			</a>
 		</div>
 		
