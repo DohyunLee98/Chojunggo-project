@@ -42,7 +42,7 @@ public class WriteService {
 				}
 				imageList.add(renamedFile);
 				System.out.println(renamedFile);
-			}
+			} // 살려주세요....
 
 		}
 
