@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>초중고</title>
-<link rel = "stylesheet" href = "css/main.css">
-<link rel = "stylesheet" href = "css/header.css">
+<link rel = "stylesheet" href = "css/main02.css">
 <script src="main.js"></script>
 </head>
 <body>
+
+	<%@ include file = "includes/header.jsp" %>
 	
-	<div class = "content">
 		<!-- <header>
 			<div class="header">
 				<h2 class="title">초중고</h2>
@@ -28,11 +28,9 @@
 				</nav>
 			</div>
 		</header> -->
-		
-        <%@ include file = "header.jsp" %>
         
 		<div class = "body">
-			<a class = "banner">
+			<a class = "banner" href = "#">
 				<img src = "image/banner_1.png">
 			</a>
 		</div>
@@ -52,8 +50,8 @@
 				
 			</ul>
 		</div><!-- end .main -->
-	</div>
 	
-<%@ include file = "includes/footer.jsp" %>
+	<%@ include file = "includes/footer.jsp" %>
+	
 </body>
 </html>

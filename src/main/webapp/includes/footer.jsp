@@ -4,8 +4,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link rel="stylesheet" href="includes/footer.css">
+<title>Footer</title>
+<link rel="stylesheet" href="css/footer.css">
 </head>
 <body>
 <footer>

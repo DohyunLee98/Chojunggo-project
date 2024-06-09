@@ -16,7 +16,9 @@ body {
     
 }
 
-form {
+header {width : 100%;}
+
+.formBox form {
 	
     background-color : #FFFF95;
     margin-top : 100px;
@@ -37,7 +39,7 @@ label {
 }
 .la_account {margin-top : 20px;}
 
-input[type = "text"], input[type = "password"] {
+.formBox input[type = "text"], .formBox input[type = "password"] {
 	
     width : calc(100% - 20px);
     padding : 10px;
@@ -47,7 +49,7 @@ input[type = "text"], input[type = "password"] {
     
 }
 
-button {
+.formBox button {
 	
     background-color : #FFCC00;
     color : #000;

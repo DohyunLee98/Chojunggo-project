@@ -17,9 +17,10 @@
 </head>
 <body>
         
-        <%@ include file = "header_join.jsp" %>
+	<%@ include file = "includes/header.jsp" %>
 
-		<form>
+	<main class = "formBox">
+		<form action = "join.do" method = "post">
 		
 			<p>* 표시는 필수 입력 항목입니다.</p>
 	        <label>* 아이디</label>
@@ -52,6 +53,7 @@
 	        <button id = "joinComplete" type = "submit">회원가입</button>
 			
 		</form>
+	</main>
 
 		<!-- modal -->
 	<div id = "modal" class = "modal">
