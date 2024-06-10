@@ -9,11 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 import mvc.command.CommandHandler;
 import user.auth.service.LoginFailException;
 import user.auth.service.LoginService;
+import user.auth.service.User2;
 
 public class LoginHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/view/loginForm.jsp";
-	private LoginService loginService = new LoginService();
+	private static final String FORM_VIEW = "/WEB-INF/login.jsp";
+	public LoginService loginService = new LoginService();
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) 
@@ -50,9 +51,9 @@ public class LoginHandler implements CommandHandler {
 		}
 
 		try {
-			user.model.User user = loginService.login(id,pwd);
-			req.getSession().setAttribute("authUser", user);
-			res.sendRedirect(req.getContextPath() + "/index.jsp");
+			User2 user2 = loginService.login(id,pwd);
+			req.getSession().setAttribute("authUser", user2);
+			res.sendRedirect(req.getContextPath() + "/main.jsp");
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

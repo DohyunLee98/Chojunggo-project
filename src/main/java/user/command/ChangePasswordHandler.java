@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import user.model.User;
+import user.model.UserVO;
 import user.service.ChangePasswordService;
 import user.service.InvalidPasswordException;
 import user.service.UserNotFoundException;
@@ -36,7 +36,7 @@ public class ChangePasswordHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res)
 	throws Exception {
-		User user = (User)req.getSession().getAttribute("authUser");
+		UserVO user = (UserVO)req.getSession().getAttribute("authUser");
 			
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
@@ -56,7 +56,7 @@ public class ChangePasswordHandler implements CommandHandler {
 		
 		try {
 			changePwdSvc.changePassword(user.getId(), curPwd, newPwd);
-			return "/WEB-INF/view/changePwdSuccess.jsp";
+			return "/WEB-INF/main.jsp";
 		} catch (InvalidPasswordException e) {
 			errors.put("badCurPwd", Boolean.TRUE);
 			return FORM_VIEW;
