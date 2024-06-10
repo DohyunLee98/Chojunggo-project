@@ -3,6 +3,7 @@ package board.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import board.dao.BoardDAO;
 import jdbc.connection.ConnectionProvider;
 
 public class ReadService {

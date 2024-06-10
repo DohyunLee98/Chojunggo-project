@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.oreilly.servlet.MultipartRequest;
 
+import board.dao.BoardDAO;
 import board.model.WriteRequest;
 import jdbc.connection.ConnectionProvider;
 
