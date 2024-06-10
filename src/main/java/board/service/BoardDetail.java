@@ -5,6 +5,7 @@ import java.util.Date;
 public class BoardDetail {
 
 	private int boardNum;
+	private String title;
 	private int price;
 	private int likesCNT;
 	private String category;
@@ -12,10 +13,10 @@ public class BoardDetail {
 	private Date createdDate;
 	private String thumbName;
 
-	public BoardDetail(int boardNum, int price, int likesCNT, String category, String location, Date createdDate,
+	public BoardDetail(int boardNum,String title, int price, int likesCNT, String category, String location, Date createdDate,
 			String thumbName) {
-		super();
 		this.boardNum = boardNum;
+		this.title = title;
 		this.price = price;
 		this.likesCNT = likesCNT;
 		this.category = category;
@@ -26,6 +27,10 @@ public class BoardDetail {
 
 	public int getBoardNum() {
 		return boardNum;
+	}
+
+	public String getTitle() {
+		return title;
 	}
 
 	public int getPrice() {

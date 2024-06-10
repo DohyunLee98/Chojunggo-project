@@ -62,7 +62,7 @@ public class WriteService {
 	}
 
 	public int insertContent(WriteRequest writeRequest) throws Exception {
-		Board board = new Board(null, writeRequest.getWriter(), writeRequest.getTitle(), writeRequest.getContent());
+		Board board = new Board(null, writeRequest.getWriter(), writeRequest.getContent());
 		try (Connection con = ConnectionProvider.getConnection()) {
 			int boardNum = boardDAO.insertBoard(con, board);
 			
@@ -83,7 +83,7 @@ public class WriteService {
 
 	private BoardDetail toBoardDetail(int boardNum, WriteRequest writeRequest) {
 		BoardDetail boardDetail = 
-				new BoardDetail(boardNum, writeRequest.getPrice(), 0, writeRequest.getCategory(), writeRequest.getLocation(), new Date(), writeRequest.getImgNames().get(0));
+				new BoardDetail(boardNum, writeRequest.getTitle(), writeRequest.getPrice(), 0, writeRequest.getCategory(), writeRequest.getLocation(), new Date(), writeRequest.getImgNames().get(0));
 		return boardDetail;
 	}
 
