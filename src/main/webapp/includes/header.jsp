@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
 		
 			<div class = "title">
 				<h1>
-					<a href = "main.do">초중고</a>
+					<a href = "/main.do">초중고</a>
 				</h1>
 			</div>
 			
@@ -29,18 +30,23 @@
 				<nav>
 					<ul>
 	
-						<li><a><img class = "basket" src = "image/basket.png"></a></li>
-						<!-- 장바구니 -->
-						<li><a><img class = "sell" src = "image/basket.png"></a></li>
-						<!-- 판매 -->
-						<li><a><img class = "login" src = "image/login.png"></a></li>
-						<!-- 로그인 -->
-						<li><a><img class = "talk" src = "image/basket.png"></a></li>
-						<!-- 톡 -->
+						<li><a><img class = "register" src = "image/basket.png"></a></li><!-- 상품 등록 -->
+						<li><a><img class = "chat" src = "image/chat.png"></a></li><!-- 채팅 -->
+						<li><a><img class = "mypage" src = "image/login.png"></a></li><!-- 마이페이지 -->
+						<li><a href = "/login.do"><img class = "login" src = "image/login.png"></a></li>
+						<%-- <c:choose><!-- 로그인 / 로그아웃 -->
+							<c:when test = "${loginCheck}">
+								<li><a href = "/logout.do"><img class = "talk" src = "image/basket.png"></a></li>
+							</c:when>
+							
+							<c:otherwise>
+								<li><a href = "/login.do"><img class = "talk" src = "image/basket.png"></a></li>
+							</c:otherwise>
+						</c:choose> --%>
 	
 					</ul>
 				</nav>
-			</div>
+			</div><!-- end #bar_right -->
 			
 		</div><!-- end #topBar -->
 	</header>

@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>초중고</title>
-<link rel = "stylesheet" href = "css/main02.css">
+<link rel = "stylesheet" href = "css/main.css">
 <script src="main.js"></script>
 </head>
 <body>
