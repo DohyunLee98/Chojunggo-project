@@ -1,4 +1,4 @@
-package board.service;
+package board.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +10,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import board.service.Board;
+import board.service.BoardContent;
+import board.service.BoardDetail;
+import board.service.Photo;
+import board.service.Writer;
 import jdbc.JdbcUtil;
 
 public class BoardDAO {
