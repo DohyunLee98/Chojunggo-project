@@ -33,10 +33,9 @@ public class BoardDAO {
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement(
-					"insert into board (user_id, user_nickname, title, trade_status) values (?, ?, ?, '판매 중')");
+					"insert into board (user_id, user_nickname, trade_status) values (?, ?, '판매 중')");
 			ps.setString(1, board.getWriter().getId());
 			ps.setString(2, board.getWriter().getNickname());
-			ps.setString(3, board.getTitle());
 			int insertedCount = ps.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -81,13 +80,14 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement(
-					"insert into board_detail (board_num, category, price, location, created_date, thumb_name) values (?, ?, ?, ?, ?, ?)");
+					"insert into board_detail (board_num, title, category, price, location, created_date, thumb_name) values (?, ?, ?, ?, ?, ?, ?)");
 			ps.setInt(1, boardDetail.getBoardNum());
-			ps.setString(2, boardDetail.getCategory());
-			ps.setInt(3, boardDetail.getPrice());
-			ps.setString(4, boardDetail.getLocation());
-			ps.setTimestamp(5, toTimestamp(boardDetail.getCreatedDate()));
-			ps.setString(6, boardDetail.getThumbName());
+			ps.setString(2, boardDetail.getTitle());
+			ps.setString(3, boardDetail.getCategory());
+			ps.setInt(4, boardDetail.getPrice());
+			ps.setString(5, boardDetail.getLocation());
+			ps.setTimestamp(6, toTimestamp(boardDetail.getCreatedDate()));
+			ps.setString(7, boardDetail.getThumbName());
 			ps.executeUpdate();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
@@ -124,7 +124,7 @@ public class BoardDAO {
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				board = new Board(boardNum, new Writer(rs.getString("user_id"), rs.getString("user_nickname")),
-						rs.getString("title"), rs.getString("trade_status"));
+						rs.getString("trade_status"));
 
 				return board;
 			}
@@ -155,16 +155,15 @@ public class BoardDAO {
 		return null;
 	}
 
-	public BoardDetail selectDetail(Connection con, int boardNum) throws SQLException {
+	public BoardDetail selectDetail(Connection con, Integer boardNum) throws SQLException {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		BoardDetail detail = null;
 		try {
 			ps = con.prepareStatement("select * from board_detail where board_num = ?");
-			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				detail = new BoardDetail(boardNum, rs.getInt("price"), rs.getInt("likes_cnt"), rs.getString("category"),
+				detail = new BoardDetail(boardNum, rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"), rs.getString("category"),
 						rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name"));
 				return detail;
 			}
@@ -204,6 +203,25 @@ public class BoardDAO {
 			ps.setString(1, board.getWriter().getId());
 			ps.executeQuery();
 		} finally {
+			JdbcUtil.close(ps);
+		}
+	}
+
+	public List<BoardDetail> selectAllDetail(Connection con) throws SQLException{
+		List<BoardDetail> boardList = new ArrayList<BoardDetail>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement("select * from board_detail");
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				boardList.add(new BoardDetail(
+						rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
+						rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
+			}
+			return boardList;
+		} finally {
+			JdbcUtil.close(rs);
 			JdbcUtil.close(ps);
 		}
 	}
