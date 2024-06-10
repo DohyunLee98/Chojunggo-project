@@ -47,6 +47,7 @@ public class JoinDAO {
 			pstmt.setString(6, user.getAccount());
 			pstmt.setString(7, user.getLocation());
 			pstmt.executeUpdate();
+			System.out.println(user.toString());
 		}
 	}
 

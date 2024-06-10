@@ -13,7 +13,7 @@ import user.auth.service.User2;
 
 public class LoginHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/login.jsp";
+	private static final String FORM_VIEW = "/login.jsp";
 	public LoginService loginService = new LoginService();
 
 	@Override
@@ -53,7 +53,7 @@ public class LoginHandler implements CommandHandler {
 		try {
 			User2 user2 = loginService.login(id,pwd);
 			req.getSession().setAttribute("authUser", user2);
-			res.sendRedirect(req.getContextPath() + "/main.jsp");
+			res.sendRedirect(req.getContextPath() +"/main.jsp");
 			return null;
 		} catch (LoginFailException e) {
 			errors.put("idOrPwNotMatch", Boolean.TRUE);

@@ -26,6 +26,7 @@ public class JoinDTO {
 		this.name = name;
 	}
 
+
 	public String getPwd() {
 		return pwd;
 	}
