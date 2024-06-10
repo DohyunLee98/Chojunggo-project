@@ -1,5 +1,7 @@
 package user.command;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +11,7 @@ import user.service.JoinService;
 
 public class JoinHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/join.jsp";
+	private static final String FORM_VIEW = "/join.jsp";
 	private JoinService joinService = new JoinService();
 
 	@Override
@@ -29,6 +31,11 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			req.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		JoinDTO joindto = new JoinDTO();
 		joindto.setId(req.getParameter("id"));
 		joindto.setPwd(req.getParameter("pwd"));
@@ -37,9 +44,8 @@ public class JoinHandler implements CommandHandler {
 		joindto.setAddress(req.getParameter("address")+ " " +req.getParameter("address_detail"));
 		joindto.setAccount(req.getParameter("account"));
 		joindto.setLocation(req.getParameter("location"));
-
 		joinService.join(joindto);
-		return "/WEB-INF/view/joinSuccess.jsp";
+		return "/login.jsp";
 
 	}
 }

@@ -1,17 +1,17 @@
 package user.service;
 
 import java.sql.Connection;
+
 import java.sql.SQLException;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
 import user.Dao.JoinDAO;
-import user.Dao.JoinDAO;
 import user.model.UserVO;
 
 public class JoinService {
 
-	public JoinDAO joindao = new JoinDAO();
+	private JoinDAO joindao = new JoinDAO();
 	
 	public void join(JoinDTO joindto) {
 		Connection conn = null;

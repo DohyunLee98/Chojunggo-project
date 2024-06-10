@@ -10,7 +10,7 @@ import user.model.UserVO;
 
 public class LoginService {
 
-	public LoginDAO LoginDao = new LoginDAO();
+	private LoginDAO LoginDao = new LoginDAO();
 	
 	public User2 login(String id, String pwd) {
 		try (Connection conn = ConnectionProvider.getConnection()) {
