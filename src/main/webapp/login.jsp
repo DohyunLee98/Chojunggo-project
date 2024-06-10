@@ -22,13 +22,13 @@
 		<form action = "login.do" name = "login" method = "post" id = "loginForm">
 		
 			<div class = "inputRow">
-				<input type = "text" name = "id" value = "${param.id}" placeholder = "아이디" />
-				<c:if test = "${errors.id}">ID를 입력하세요.</c:if>
+				<input type = "text" name = "id" placeholder = "아이디" />
+				<c:if test = "${errors.id}">ID를 다시 입력하세요.</c:if>
 			</div>
 			
 			<div class = "inputRow">
-				<input type = "password" name = "pw" value = "${param.pw}" placeholder = "비밀번호" />
-				<c:if test = "${errors.password}">비밀번호를 입력하세요.</c:if>
+				<input type = "password" name = "pwd" placeholder = "비밀번호" />
+				<c:if test = "${errors.password}">비밀번호를 다시 입력하세요.</c:if>
 			</div>
 			
 			<c:if test = "${errors.idOrPwNotMatch}" >

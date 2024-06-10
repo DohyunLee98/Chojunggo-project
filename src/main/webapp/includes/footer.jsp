@@ -28,10 +28,10 @@
 			<div id = "hash">
 				<ul>
 				
-					<li><a href = "#"><img src = "image/insta.png"></a></li>
-					<li><a href = "#"><img src = "image/youtube.png"></a></li>
-					<li><a href = "#"><img src = "image/facebook.png"></a></li>
-					<li><a href = "#"><img src = "image/kakao.jpg"></a></li>
+					<li><a href = "https://www.instagram.com/"><img src = "image/insta.png"></a></li>
+					<li><a href = "https://www.youtube.com/"><img src = "image/youtube.png"></a></li>
+					<li><a href = "https://www.facebook.com/?locale=ko_KR"><img src = "image/facebook.png"></a></li>
+					<li><a href = "https://www.kakaocorp.com/page/service/service/KakaoTalk"><img src = "image/kakao.jpg"></a></li>
 				
 				</ul>			
 			</div>
