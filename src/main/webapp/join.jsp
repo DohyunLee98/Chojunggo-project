@@ -27,10 +27,10 @@
 	        <input type = "text" name = "id" id = "id"><br>
 	        
 	        <label>* 비밀번호</label>
-	        <input type = "password" name = "pw" id = "pw1"><br>
+	        <input type = "password" name = "pwd" id = "pw1"><br>
 	        
 	        <label>* 비밀번호 확인</label>
-	        <input type = "password" name = "pwCheck" id = "pw2"><br>
+	        <input type = "password" name = "pwdCheck" id = "pw2"><br>
 	        
 	        <label>* 이름</label>
 	        <input type = "text" name = "name"><br>
