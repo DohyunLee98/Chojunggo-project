@@ -17,19 +17,20 @@
 </head>
 <body>
         
-        <%@ include file = "header_join.jsp" %>
+	<%@ include file = "includes/header.jsp" %>
 
-		<form>
+	<main class = "formBox">
+		<form action = "join.do" method = "post">
 		
 			<p>* 표시는 필수 입력 항목입니다.</p>
 	        <label>* 아이디</label>
 	        <input type = "text" name = "id" id = "id"><br>
 	        
 	        <label>* 비밀번호</label>
-	        <input type = "password" name = "pw" id = "pw1"><br>
+	        <input type = "password" name = "pwd" id = "pw1"><br>
 	        
 	        <label>* 비밀번호 확인</label>
-	        <input type = "password" name = "pwCheck" id = "pw2"><br>
+	        <input type = "password" name = "pwdCheck" id = "pw2"><br>
 	        
 	        <label>* 이름</label>
 	        <input type = "text" name = "name"><br>
@@ -52,6 +53,7 @@
 	        <button id = "joinComplete" type = "submit">회원가입</button>
 			
 		</form>
+	</main>
 
 		<!-- modal -->
 	<div id = "modal" class = "modal">

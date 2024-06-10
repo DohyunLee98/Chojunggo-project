@@ -5,13 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title>초중고</title>
-<link rel = "stylesheet" href = "css/main.css">
-<link rel = "stylesheet" href = "css/header.css">
+<link rel = "stylesheet" href = "css/main02.css">
 <script src="main.js"></script>
 </head>
 <body>
+
+	<%@ include file = "includes/header.jsp" %>
 	
-	<div class = "content">
 		<!-- <header>
 			<div class="header">
 				<h2 class="title">초중고</h2>
@@ -29,31 +29,61 @@
 			</div>
 		</header> -->
 		
-        <%@ include file = "header.jsp" %>
-        
-		<div class = "body">
-			<a class = "banner">
-				<img src = "image/banner_1.png">
-			</a>
-		</div>
-		
-		<div class = "main">
-			<button>전체</button>
-			<ul id = "mainList" class = "mainList">
+	<!-- main -->
+	<main>
+		<div class = "section">
+			<input type = "radio" name = "slide" id = "banner01" checked>
+			<input type = "radio" name = "slide" id = "banner02">
+			<input type = "radio" name = "slide" id = "banner03">
 			
-				<li><a>디지털</a></li>
-				<li><a>가구</a></li>
-				<li><a>의류</a></li>
-				<li><a>가전제품</a></li>
-				<li><a>주방용품</a></li>
-				<li><a>스포츠/레저</a></li>
-				<li><a>뷰티</a></li>
-				<li><a>기타</a></li>
+			<div class = "bannerBox">
+				<ul class = "banner">
+					<li><a href = "#">
+						<label for = "banner03" class = "left"></label>
+						<img src = "image/banner_1.png">
+						<label for = "banner02" class = "right"></label>
+					</a></li>
+					
+					<li><a href = "#">
+						<label for = "banner01" class = "left"></label>
+						<img src = "image/banner_2.jpg">
+						<label for = "banner03" class = "right"></label>
+					</a></li>
+					
+					<li><a href = "#">
+						<label for = "banner02" class = "left"></label>
+						<img src = "image/banner_3.jpg">
+						<label for = "banner01" class = "right"></label>
+					</a></li>
+				</ul>
+			</div>
+			
+			<div class = "mainMenu">
 				
-			</ul>
-		</div><!-- end .main -->
-	</div>
+				<button>전체</button>
+				
+				<div class = "listBox">
+					<ul id = "mainList" class = "mainList">
+					
+						<li><a href = "#">디지털</a></li>
+						<li><a href = "#">가구</a></li>
+						<li><a href = "#">의류</a></li>
+						<li><a href = "#">가전제품</a></li>
+						<li><a href = "#">주방용품</a></li>
+						<li><a href = "#">스포츠/레저</a></li>
+						<li><a href = "#">뷰티</a></li>
+						<li><a href = "#">기타</a></li>
+						
+					</ul>
+				</div><!-- end .listBox -->
+				
+			</div><!-- end .mainMenu -->
+		</div><!-- end .section -->
+		
+	</main>
 	
-<%@ include file = "includes/footer.jsp" %>
+	<!-- footer -->
+	<%@ include file = "includes/footer.jsp" %>
+	
 </body>
 </html>
