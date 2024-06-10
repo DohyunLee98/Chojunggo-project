@@ -1,22 +1,17 @@
 package user.command;
 
-import java.util.HashMap;
-
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import mvc.command.CommandHandler;
-import user.service.DuplicateIdException;
-import user.service.JoinRequest;
+import user.service.JoinDTO;
 import user.service.JoinService;
-import user.model.User;
+
 public class JoinHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/WEB-INF/view/joinForm.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/join.jsp";
 	private JoinService joinService = new JoinService();
-	
+
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) {
 		if (req.getMethod().equalsIgnoreCase("GET")) {
@@ -34,31 +29,17 @@ public class JoinHandler implements CommandHandler {
 	}
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
-		JoinRequest joinReq = new JoinRequest();
-		joinReq.setId(req.getParameter("id"));
-		joinReq.setPwd(req.getParameter("pwd"));
-		joinReq.setName(req.getParameter("name"));
-		joinReq.setNickname(req.getParameter("nickname"));
-		joinReq.setAddress(req.getParameter("address"));
-		joinReq.setAccount(req.getParameter("account"));
-		joinReq.setLocation(req.getParameter("location"));
-		
-		Map<String, Boolean> errors = new HashMap<>();
-		req.setAttribute("errors", errors);
-		
-		joinReq.validate(errors);
-		
-		if (!errors.isEmpty()) {
-			return FORM_VIEW;
-		}
-		
-		try {
-			joinService.join(joinReq);
-			return "/WEB-INF/view/joinSuccess.jsp";
-		} catch (DuplicateIdException e) {
-			errors.put("duplicateId", Boolean.TRUE);
-			return FORM_VIEW;
-		}
-	}
+		JoinDTO joindto = new JoinDTO();
+		joindto.setId(req.getParameter("id"));
+		joindto.setPwd(req.getParameter("pwd"));
+		joindto.setName(req.getParameter("name"));
+		joindto.setNickname(req.getParameter("nickname"));
+		joindto.setAddress(req.getParameter("address")+ " " +req.getParameter("address_detail"));
+		joindto.setAccount(req.getParameter("account"));
+		joindto.setLocation(req.getParameter("location"));
 
+		joinService.join(joindto);
+		return "/WEB-INF/view/joinSuccess.jsp";
+
+	}
 }

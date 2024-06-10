@@ -5,12 +5,12 @@ import java.sql.SQLException;
 
 import jdbc.JdbcUtil;
 import jdbc.connection.ConnectionProvider;
-import user.Dao.UserDao;
-import user.model.User;
+import user.Dao.ChangePasswordDAO;
+import user.model.UserVO;
 
 public class ChangePasswordService {
 
-	private UserDao UserDao = new UserDao();
+	public ChangePasswordDAO ChangePasswordDao = new ChangePasswordDAO();
 	
 	public void changePassword(String userId, String curPwd, String newPwd) {
 		Connection conn = null;
@@ -18,7 +18,7 @@ public class ChangePasswordService {
 			conn = ConnectionProvider.getConnection();
 			conn.setAutoCommit(false);
 			
-			User User = UserDao.selectById(conn, userId);
+			UserVO User = ChangePasswordDao.selectById(conn, userId);
 			if (User == null) {
 				throw new UserNotFoundException();
 			}
@@ -26,7 +26,7 @@ public class ChangePasswordService {
 				throw new InvalidPasswordException();
 			}
 			User.changePassword(newPwd);
-			UserDao.update(conn, User);
+			ChangePasswordDao.update(conn, User);
 			conn.commit();
 		} catch (SQLException e) {
 			JdbcUtil.rollback(conn);

@@ -1,6 +1,6 @@
 package user.model;
 
-public class User {
+public class UserVO {
 
 	private String id;
 	private String pwd;
@@ -10,7 +10,7 @@ public class User {
 	private String account;
 	private String location;
 
-	public User(String id,String pwd,String name,String nickname,String address,String account,String location) {
+	public UserVO(String id,String pwd,String name,String nickname,String address,String account,String location) {
 		this.id = id;
 		this.pwd = pwd;
 		this.name = name;
@@ -44,10 +44,10 @@ public class User {
 	}
 
 	public boolean matchPassword(String curPwd) {
-		return false;
+		return pwd.equals(curPwd);
 	}
 
 	public void changePassword(String newPwd) {
-		
+		this.pwd =newPwd;
 	}
 }

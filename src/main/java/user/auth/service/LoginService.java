@@ -4,23 +4,24 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import jdbc.connection.ConnectionProvider;
-import user.Dao.UserDao;
-import user.model.User;
+import user.Dao.LoginDAO;
+import user.model.UserVO;
 
 
 public class LoginService {
 
-	private UserDao UserDao = new UserDao();
-	public User login(String id, String pwd) {
+	public LoginDAO LoginDao = new LoginDAO();
+	
+	public User2 login(String id, String pwd) {
 		try (Connection conn = ConnectionProvider.getConnection()) {
-			User User = UserDao.selectById(conn, id);
+			UserVO User = LoginDao.selectById(conn, id);
 			if (User == null) {
 				throw new LoginFailException();
 			}
 			if (!User.matchPassword(pwd)) {
 				throw new LoginFailException();
 			}
-			return new User(User.getId(), User.getPwd(),User.getName(),User.getNickname(),User.getAddress(),User.getAccount(),User.getLocation());
+			return new User2(User.getId(),User.getNickname());
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
