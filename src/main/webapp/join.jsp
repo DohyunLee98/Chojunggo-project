@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>초중고 회원가입</title>
+<title>초중고 : 회원가입</title>
 <link rel = "stylesheet" href = "css/common.css" />
 <link rel = "stylesheet" href = "css/join.css" />
 <link rel = "stylesheet" href = "css/modal.css" />
@@ -14,6 +14,13 @@
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src = "https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src = "js/join.js"></script>
+
+<style>
+
+	#floatBar {display : none;}
+
+</style>
+
 </head>
 <body>
         

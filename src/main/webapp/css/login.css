@@ -5,141 +5,172 @@ main color : #ffff95, yellow
 sub color : #999 
 */
 
-body {height : 800px;}
+body {
+	
+    margin : 0;
+    padding : 0;
+    box-sizing : border-box;
+    font-family : Arial, sans-serif;
+    
+}
 
 #wrapper {
 	
-	width : 100%;
-	height : 800px;
-	margin : 200px auto;
-	
+    width : 80%;
+    max-width : 1200px;
+    height : 50vh;
+    margin : 100px auto 120px;
+    padding : 20px;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    justify-content : center;
+    
 }
 
-header {margin : 100px auto 50px;}
-header h1 {
+header {
 	
-	font-size : 3rem;
-	text-shadow : 2px 2px yellow;
-	
+    margin : 0;
+    text-align : center;
+    
 }
 
 #logo {
-
-	text-align : center;
-	color : yellow;
 	
+    text-align : center;
+    color : yellow;
+    
 }
 #logo a {
 	
-	text-decoration : none;
-	color : black;
-	font-weight : bold;
-	
+    text-decoration : none;
+    color : black;
+    font-weight : bold;
+    font-size : 3rem;
+    
 }
 
 #container {
 	
-	width : 80%;
-	margin : 0 auto;
-	
+    width : 100%;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    
 }
 
 #loginForm {
 	
-	width : 80%;
-	height : 200px;
-	margin : 0 auto;
-	
+    width : 100%;
+    max-width : 500px;
+    padding : 40px;
+    box-shadow : 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius : 8px;
+    background : #fff;
+    display : flex;
+    flex-direction : column;
+    align-items : center;
+    
 }
 #loginForm .inputRow {
 	
-	width : 400px;
-	height : 50px;
-	margin : 0 auto;
-	
+    width : 100%;
+    margin-bottom : 20px;
+    
 }
-#loginForm .inputRow input{
+#loginForm .inputRow input {
 	
-	width : 100%;
-	height : 100%;
-	margin : 0 auto;
-	border-radius : 4px;
-	
+    width : 96%;
+    height : 40px;
+    padding : 0 10px;
+    border-radius : 4px;
+    border : 1px solid #ccc;
+    font-size : 1rem;
+    
 }
 #loginForm #log_login {
 	
-	width : 400px;
-	height : 50px;
-	margin : 0 auto;
-	
+    width : 100%;
+    text-align : center;
+    
 }
 #loginForm #log_login input {
 	
-	width : 100%;
-	height : 100%;
-	margin : 50px 4px 10px;
-	background-color : #ffff95;
-	border-radius : 4px;
-	
+    width : 100%;
+    height : 40px;
+    background-color : #ffff95;
+    border : none;
+    border-radius : 4px;
+    cursor : pointer;
+    margin-top : 20px;
+    font-size : 1rem;
+    
 }
 
 .mid {
 	
-	width : 408px;
-	margin : 0 auto;
-	
+    width : 100%;
+    max-width : 500px;
+    margin : 30px auto 0;
+    text-align : center;
+    
 }
 .mid ul {
 	
-	list-style : none;
-	text-align : center;
-	margin-left : -40px;
-	
+    list-style : none;
+    padding : 0;
+    
 }
 .mid ul a {
 	
-	text-decoration : none;
-	color : #999;
-	
+    text-decoration : none;
+    color : #999;
+    
 }
 .mid ul li {
 	
-	display : inline-block;
-	font-size : 14px;
-	
+    display : inline-block;
+    font-size : 16px;
+    margin-right : 10px;
+    
 }
 
-footer {
+@media (max-width : 768px) {
 	
-	width : 80%;
-	height : 150px;
-	margin: 180px auto 0;
-		
+    #wrapper {
+    
+        width : 90%;
+        margin : 50px auto;
+        
+    }
+    
+    #loginForm {padding : 10px;}
+    #loginForm .inputRow input {height : 36px;}
+    #loginForm #log_login input {height : 36px;}
+    
+    .mid {width : 90%;}
+    
 }
-.footerInner {
+
+@media (max-width : 480px) {
 	
-	width : 70%;
-	margin : 0 auto;
-	
-}
-.footerInner #fiUp {
-	
-	list-style : none;
-	text-align : center;
-	margin-left : -7.5%;
-	
-}
-.footerInner #fiUp li a {
-	
-	text-decoration : none;
-	color : #999;
-	
-}
-.footerInner #fiUp li {display : inline-block;}
-.footerInner #fiDown {text-align : center;}
-.footerInner #fiDown span {
-	
-	text-shadow : 2px 2px yellow;
-	font-weight : bold;
-	
+    #wrapper {
+    
+        width : 100%;
+        margin : 20px auto;
+        
+    }
+    
+    header {margin : 50px auto 20px;}
+    
+    #loginForm {padding : 5px;}
+    #loginForm .inputRow input {height : 34px;}
+    #loginForm #log_login input {height : 34px;}
+    
+    .mid ul li {
+    
+        display : block;
+        margin-bottom : 10px;
+        
+    }
 }
