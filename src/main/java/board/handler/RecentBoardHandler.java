@@ -1,4 +1,4 @@
-package board.Handler;
+package board.handler;
 
 import java.sql.Connection;
 import java.sql.SQLException;

@@ -1,4 +1,4 @@
-package board.Handler;
+package board.handler;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -22,7 +22,7 @@ public class ReadHandler implements CommandHandler {
 		AssembledBoard assemble = readService.getBoard(boardNum);
 		readService.insertRecentBoard(assemble.getBoard()); // 최근 본 게시판에 추가
 		req.setAttribute("assemble", assemble);
-		return "/WEB-INF/view/readBoard.jsp";
+		return "/WEB-INF/view/read.jsp";
 	}
 
 }

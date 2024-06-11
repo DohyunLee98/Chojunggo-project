@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <%@ include file="includes/header.jsp" %>
+    <%@ include file="/includes/header.jsp" %>
     <div class="container">
         <main>
             <aside class="chat-list-section">
@@ -40,6 +40,6 @@
             </section>
         </main>
     </div>
-    <%@ include file="includes/footer.jsp" %>
+    <%@ include file="/includes/footer.jsp" %>
 </body>
 </html>

@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<%@ include file = "includes/header.jsp" %>
+	<%@ include file = "/includes/header.jsp" %>
 	
 		<!-- <header>
 			<div class="header">
@@ -83,7 +83,7 @@
 	</main>
 	
 	<!-- footer -->
-	<%@ include file = "includes/footer.jsp" %>
+	<%@ include file = "/includes/footer.jsp" %>
 	
 </body>
 </html>
