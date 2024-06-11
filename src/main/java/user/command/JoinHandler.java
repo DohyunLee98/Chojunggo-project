@@ -11,7 +11,7 @@ import user.service.JoinService;
 
 public class JoinHandler implements CommandHandler {
 
-	private static final String FORM_VIEW = "/join.jsp";
+	private static final String FORM_VIEW = "/WEB-INF/view/join.jsp";
 	private JoinService joinService = new JoinService();
 
 	@Override
@@ -45,7 +45,7 @@ public class JoinHandler implements CommandHandler {
 		joindto.setAccount(req.getParameter("account"));
 		joindto.setLocation(req.getParameter("location"));
 		joinService.join(joindto);
-		return "/login.jsp";
+		return "/WEB-INF/view/login.jsp";
 
 	}
 }
