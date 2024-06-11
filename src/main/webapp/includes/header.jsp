@@ -30,19 +30,15 @@
 				<nav>
 					<ul>
 	
-						<li><a><img class = "register" src = "image/basket.png"></a></li><!-- 상품 등록 -->
-						<li><a><img class = "chat" src = "image/chat.png"></a></li><!-- 채팅 -->
-						<li><a><img class = "mypage" src = "image/login.png"></a></li><!-- 마이페이지 -->
-						<li><a href = "/login.do"><img class = "login" src = "image/login.png"></a></li>
-						<%-- <c:choose><!-- 로그인 / 로그아웃 -->
-							<c:when test = "${loginCheck}">
-								<li><a href = "/logout.do"><img class = "talk" src = "image/basket.png"></a></li>
-							</c:when>
-							
-							<c:otherwise>
-								<li><a href = "/login.do"><img class = "talk" src = "image/basket.png"></a></li>
-							</c:otherwise>
-						</c:choose> --%>
+						<li><a href = "#"><img class = "register" src = "image/register.png"></a></li><!-- 상품 등록 -->
+						<li><a href = "#"><img class = "chat" src = "image/chat.png"></a></li><!-- 채팅 -->
+						<li><a href = "#"><img class = "mypage" src = "image/mypage.png"></a></li><!-- 마이페이지 -->
+						<c:if test="${!empty login}"><!-- 로그인 / 로그아웃 -->
+							<li><a href = "/logout.do"><img class = "login" src = "image/logout.png"></a></li>
+						</c:if>
+                        <c:if test="${empty login}">
+                        	<li><a href = "/login.do"><img class = "logout" src = "image/login.png"></a></li>
+                        </c:if>
 	
 					</ul>
 				</nav>

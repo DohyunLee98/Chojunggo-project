@@ -81,7 +81,7 @@ ul.banner {
 }
 
 .section [id = "banner01"]:checked ~ .bannerBox .banner > li {transform : translateX(0%);}
-.section [id = "banner02"]:checked ~ .bannerBox .banner > li {transform : translateX(-100%);}	/* 이미지 너비가 작음. 숫자 수정하기 */
+.section [id = "banner02"]:checked ~ .bannerBox .banner > li {transform : translateX(-102%);}	/* 이미지 너비가 작음. 숫자 수정하기 */
 .section [id = "banner03"]:checked ~ .bannerBox .banner > li {transform : translateX(-200%);}
 
 a {

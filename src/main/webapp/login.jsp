@@ -5,15 +5,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>초중고 : 로그인</title>
 <link rel = "stylesheet" href = "css/common.css" />
 <link rel = "stylesheet" href = "css/login.css" />
+
+<style>
+
+#floatBar {display : none;}
+
+</style>
+
 </head>
 <body>
 
 <div id = "wrapper">
 
-	<header>
+	<header style = "background : white;">
 		<h1 id = "logo"><a href = "main.do">초중고</a></h1>
 	</header>
 	
@@ -55,7 +62,7 @@
 		
 	</div><!-- end #container -->	
 		
-	<footer>
+	<!-- <footer>
 	
 		<div class = "footerInner">
 			<ul id = "fiUp">
@@ -69,10 +76,12 @@
 			
 			<p id = "fiDown"><span>초중고</span> Copyright © 초중고 Corp. All Rights Reserved.</p>
 			
-		</div><!-- end .footerInner -->
+		</div>end .footerInner
 			
-	</footer>
+	</footer> -->
+	
 	
 </div><!-- end #wrapper -->
+
 </body>
 </html>
