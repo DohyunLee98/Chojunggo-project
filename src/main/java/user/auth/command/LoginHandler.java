@@ -52,7 +52,7 @@ public class LoginHandler implements CommandHandler {
 
 		try {
 			User2 user2 = loginService.login(id,pwd);
-			req.getSession().setAttribute("authUser", user2);
+			req.getSession().setAttribute("login", user2);
 			res.sendRedirect(req.getContextPath() +"/main.jsp");
 			return null;
 		} catch (LoginFailException e) {

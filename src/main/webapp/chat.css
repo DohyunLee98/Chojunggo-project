@@ -1,0 +1,274 @@
+@charset "UTF-8";
+
+html, body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+    height: 100%;
+    overflow: auto; /* 전체 페이지를 스크롤 가능하게 설정 */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+header {
+    background-color: #ffcc00;
+    padding: 10px 0;
+}
+
+#topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+.title h1 {
+    margin: 0;
+}
+.title h1 a {
+    color: #000;
+    font-size: 24px;
+}
+
+.searchbar {
+    display: flex;
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fff;
+}
+.searchbar > input:focus {
+    outline: none;
+}
+.searchbar input[type="text"] {
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 200px;
+}
+.searchbar img.search {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+#bar_right nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+#bar_right nav ul li {
+    display: flex;
+    align-items: center;
+}
+#bar_right nav ul li a img {
+    width: 30px;
+    height: 30px;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 20px; /* 헤더와 간격 추가 */
+    margin-bottom: 20px; /* 푸터와 간격 추가 */
+}
+
+.chat-list-section {
+    width: 50%; /* 너비를 50%로 설정 */
+    background-color: #fff;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.chat-list-section nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.chat-list-section nav ul li {
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: bold;
+}
+
+.chat-list {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+.chat-item {
+    display: flex;
+    padding: 10px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    cursor: pointer;
+}
+
+.chat-item:hover {
+    background-color: #f9f9f9;
+}
+
+.chat-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.chat-details {
+    flex-grow: 1;
+}
+
+.chat-title {
+    font-weight: bold;
+    margin: 0;
+}
+
+.chat-window {
+    width: 50%; /* 너비를 50%로 설정 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    overflow-y: auto;
+    padding: 45px; /* 패딩을 추가하여 크기를 키움 */
+    min-height: 80vh; /* 최소 높이 설정 */
+    flex-grow: 1;
+}
+
+.empty-chat {
+    text-align: center;
+    color: #888;
+}
+
+.empty-chat i {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+footer {
+    background: #eee;
+    color: #000;
+    padding: 20px 0;
+    font-size: 14px;
+    width: 100%;
+    margin-top: 20px;
+}
+footer hr {
+    width: 100%;
+    border: 0.5px solid white;
+    margin: 20px 0;
+}
+
+.footerInner {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.firstInner, .secondInner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+#footerInfo {
+    width: 70%;
+}
+
+#footerInfo h4 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+#footerInfo p {
+    line-height: 1.6;
+    color: #999;
+}
+
+#hash {
+    width: 25%;
+    text-align: right;
+}
+
+#hash ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#hash ul li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+#hash ul li img {
+    width: 24px;
+    height: 24px;
+}
+
+.secondInner {
+    flex-direction: column;
+    align-items: center;
+}
+
+#fiUp {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#fiUp li a {
+    text-decoration: none;
+    color: #999;
+}
+
+#fiUp li a span {
+    font-weight: bold;
+    color: #000;
+}
+
+#fiDown {
+    color: #aaa;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .firstInner, .secondInner {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    #footerInfo, #hash {
+        width: 100%;
+    }
+
+    #hash ul li {
+        display: inline-block;
+        margin: 10px 5px;
+    }
+}

@@ -10,7 +10,7 @@ public class MainHandler implements CommandHandler {
 
 	 public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		 HttpSession session = req.getSession(false); 
-	        boolean loginCheck = (session != null && session.getAttribute("authUser") != null);
+	        boolean loginCheck = (session != null && session.getAttribute("logins") != null);
 
 	        req.setAttribute("loginCheck", loginCheck);
 	        

@@ -36,7 +36,7 @@ public class ChangePasswordHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest req, HttpServletResponse res)
 	throws Exception {
-		UserVO user = (UserVO)req.getSession().getAttribute("authUser");
+		UserVO user = (UserVO)req.getSession().getAttribute("login");
 			
 		Map<String, Boolean> errors = new HashMap<>();
 		req.setAttribute("errors", errors);
