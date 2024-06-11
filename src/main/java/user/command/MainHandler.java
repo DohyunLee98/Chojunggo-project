@@ -10,11 +10,11 @@ public class MainHandler implements CommandHandler {
 
 	 public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		 HttpSession session = req.getSession(false); 
-	        boolean loginCheck = (session != null && session.getAttribute("logins") != null);
+	        boolean loginCheck = (session != null && session.getAttribute("login") != null);
 
 	        req.setAttribute("loginCheck", loginCheck);
 	        
-	        req.getRequestDispatcher("/main.jsp").forward(req,res);
+	        req.getRequestDispatcher("/WEB-INF/view/main.jsp").forward(req,res);
 	        return null;
 	}
 }

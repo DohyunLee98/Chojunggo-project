@@ -24,7 +24,7 @@
 </head>
 <body>
         
-	<%@ include file = "includes/header.jsp" %>
+	<%@ include file = "/includes/header.jsp" %>
 
 	<main class = "formBox">
 		<form action = "join.do" method = "post">
@@ -53,7 +53,7 @@
 	        
 	        <label>* 거래 선호 지역</label>
 	        <input type = "text" name = "location"><br>
-	        <%@ include file = "includes/location.jsp" %>
+	        <%@ include file = "/includes/location.jsp" %>
 	        
 	        <label class = "la_account">계좌번호</label>
 	        <input type = "text" name = "account" placeholder = "000-1234-5678-00"><br>
@@ -71,7 +71,7 @@
 	</div>
 	<!-- modal 끝 -->
 	
-	<%@ include file = "includes/footer.jsp" %>
+	<%@ include file = "/includes/footer.jsp" %>
 
 </body>
 </html>

@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<%@ include file="includes/header.jsp"%>
+	<%@ include file="/includes/header.jsp"%>
 	<div class="container">
 		<div class="header">
 			<h4>최근 본 상품</h4>
@@ -35,6 +35,6 @@
 		</c:forEach>
 		</c:if>
 	</div>
-	<%@ include file="includes/footer.jsp"%>
+	<%@ include file="/includes/footer.jsp"%>
 </body>
 </html>

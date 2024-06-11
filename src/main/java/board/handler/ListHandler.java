@@ -1,4 +1,4 @@
-package board.Handler;
+package board.handler;
 
 import java.io.IOException;
 import java.io.PrintWriter;

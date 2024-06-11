@@ -1,4 +1,4 @@
-package board.Handler;
+package board.handler;
 
 import java.util.List;
 
@@ -20,7 +20,7 @@ public class WriteHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equalsIgnoreCase("get")) {
-			return "/WEB-INF/view/upload.jsp";
+			return "/WEB-INF/view/write.jsp";
 		} else if (request.getMethod().equalsIgnoreCase("POST")) {
 			return processSubmit(request, response);
 		} else {
@@ -42,7 +42,7 @@ public class WriteHandler implements CommandHandler {
 		int boardNum = writeService.insertContent(writeRequest);
 		request.setAttribute("boardNum", boardNum);
 		
-		return "/WEB-INF/view/writeSuccess.jsp";
+		return "/WEB-INF/view/list.jsp";
 	}
 	
 	private WriteRequest toWriteRequest(MultipartRequest multi, Writer writer) throws Exception{

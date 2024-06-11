@@ -10,7 +10,7 @@
 </head>
 <body>
 
-	<%@ include file = "includes/header.jsp"%>
+	<%@ include file = "/includes/header.jsp"%>
 
 	<main>
 		<div id = "wrapper">
@@ -146,7 +146,7 @@
 		</div><!-- end #wrapper -->
 	</main>
 
-	<%@ include file = "includes/footer.jsp"%>
+	<%@ include file = "/includes/footer.jsp"%>
 
 </body>
 </html>
