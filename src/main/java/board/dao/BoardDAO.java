@@ -16,6 +16,7 @@ import board.service.BoardDetail;
 import board.service.Photo;
 import board.service.Writer;
 import jdbc.JdbcUtil;
+import user.auth.service.User;
 
 public class BoardDAO {
 
@@ -220,6 +221,49 @@ public class BoardDAO {
 						rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
 			}
 			return boardList;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(ps);
+		}
+	}
+
+	public List<Integer> selectRecentBoard(Connection con, User user) throws SQLException{
+		List<Integer> boardNumList = new ArrayList<Integer>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = con.prepareStatement("select board_num from recent_board where user_id = ?");
+			ps.setString(1, user.getId());
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				boardNumList.add(rs.getInt("board_num"));
+			}
+			
+			return boardNumList;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(ps);
+		}
+	}
+
+	public List<BoardDetail> selectDetailById(Connection con, List<Integer> boardNumList) throws SQLException{
+		List<BoardDetail> boardList = new ArrayList<BoardDetail>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			for(int i = 0; i < boardNumList.size(); i++) {
+				ps = con.prepareStatement("select * from board_detail where board_num = ?");
+				ps.setInt(1, boardNumList.get(i));
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					boardList.add(new BoardDetail(
+							rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
+							rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
+				}
+			}
+			return boardList; 
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(ps);
