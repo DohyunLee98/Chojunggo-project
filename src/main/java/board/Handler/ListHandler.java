@@ -21,13 +21,18 @@ public class ListHandler implements CommandHandler{
 	private BoardDAO boardDAO = new BoardDAO();
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res)  {
+		processJSON(req, res);
+		return null;
+	}
+	
+	private void processJSON(HttpServletRequest request, HttpServletResponse response) {
 		JSONObject json = new JSONObject();
 		try (Connection con = ConnectionProvider.getConnection()){
 			List<BoardDetail> boardList= boardDAO.selectAllDetail(con); 
 			
 			json.put("list", boardList);
 			
-			PrintWriter out = res.getWriter();
+			PrintWriter out = response.getWriter();
 			out.print(json.toString());
 			out.flush();
 		}catch (SQLException e){
@@ -35,7 +40,7 @@ public class ListHandler implements CommandHandler{
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		} 
-		return "/list.jsp";
+		
 	}
 	
 }
