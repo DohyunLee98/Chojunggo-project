@@ -6,28 +6,13 @@
 <meta charset="UTF-8">
 <title>초중고</title>
 <link rel = "stylesheet" href = "css/main.css">
+<link rel = "stylesheet" href = "css/common.css">
 <script src="main.js"></script>
+<script src = "https://code.jquery.com/jquery-3.7.1.min.js"></script>
 </head>
 <body>
 
 	<%@ include file = "/includes/header.jsp" %>
-	
-		<!-- <header>
-			<div class="header">
-				<h2 class="title">초중고</h2>
-				<img class="logo" src="#"> 로고이미지
-				<div class="searchbar">
-					<input type="text" placeholder="상품명, 지역명 입력">
-					<a>돋보기?</a>
-				</div>
-				<nav>
-					<ul class="logo">
-						<li><a><img class="basket" src="image/basket.png"></a></li>
-						<li><a>로그인/회원가입</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header> -->
 		
 	<!-- main -->
 	<main>
@@ -60,19 +45,19 @@
 			
 			<div class = "mainMenu">
 				
-				<button>전체</button>
+				<button id = "category">카테고리</button>
 				
 				<div class = "listBox">
 					<ul id = "mainList" class = "mainList">
 					
-						<li><a href = "#">디지털</a></li>
-						<li><a href = "#">가구</a></li>
-						<li><a href = "#">의류</a></li>
-						<li><a href = "#">가전제품</a></li>
-						<li><a href = "#">주방용품</a></li>
-						<li><a href = "#">스포츠/레저</a></li>
-						<li><a href = "#">뷰티</a></li>
-						<li><a href = "#">기타</a></li>
+						<li id = "digi"><a href = "#">디지털</a></li>
+						<li id = "funi"><a href = "#">가구</a></li>
+						<li id = "clothing"><a href = "#">의류</a></li>
+						<li id = "applliance"><a href = "#">가전제품</a></li>
+						<li id = "kitchen"><a href = "#">주방용품</a></li>
+						<li id = "leisure"><a href = "#">스포츠/레저</a></li>
+						<li id = "beauty"><a href = "#">뷰티</a></li>
+						<li id = "etc"><a href = "#">기타</a></li>
 						
 					</ul>
 				</div><!-- end .listBox -->

@@ -5,7 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
-<link rel = "stylesheet" href = "css/productDetail.css">
+<link rel = "stylesheet" href = "css/common.css">
+<link rel = "stylesheet" href = "css/read.css">
 <link rel = "stylesheet" href = "//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
 <body>
@@ -61,15 +62,7 @@
 						</div><!-- end .productContent -->
 
 						<div class = "buttonBox">
-
-							<div id = "jjimBox">
-								<button class = "jjim">
-									<img src = "image/heart.png">
-									<span>찜</span>
-									<span>0</span>
-								</button>
-							</div><!-- end #jjim -->
-
+						
 							<div id = "chatBox">
 								<button class = "chat">
 									<img src = "image/chat2.png">
