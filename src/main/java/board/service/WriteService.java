@@ -12,6 +12,7 @@ import com.oreilly.servlet.MultipartRequest;
 import board.dao.BoardDAO;
 import board.model.WriteRequest;
 import jdbc.connection.ConnectionProvider;
+import user.auth.service.User2;
 
 public class WriteService {
 
@@ -19,7 +20,7 @@ public class WriteService {
 	List<String> imageList;
 	BoardDAO boardDAO = new BoardDAO();
 
-	public List<String> uploadImages(MultipartRequest multi, Writer writer, String path) throws Exception {
+	public List<String> uploadImages(MultipartRequest multi, User2 writer, String path) throws Exception {
 		imageList = new ArrayList<>();
 		uploadPath = path;
 
@@ -62,7 +63,7 @@ public class WriteService {
 	}
 
 	public int insertContent(WriteRequest writeRequest) throws Exception {
-		Board board = new Board(null, writeRequest.getWriter(), writeRequest.getContent());
+		Board board = new Board(null, writeRequest.getUser2(), writeRequest.getContent());
 		try (Connection con = ConnectionProvider.getConnection()) {
 			int boardNum = boardDAO.insertBoard(con, board);
 			
@@ -72,7 +73,9 @@ public class WriteService {
 			
 			boardDAO.insertBoardContent(con, boardContent);
 			boardDAO.insertBoardDetail(con, boardDetail);
-			boardDAO.insertPhoto(con, photo);
+			if(!photo.getImageName().isEmpty()) {
+				boardDAO.insertPhoto(con, photo);
+			}
 			
 			return boardNum;
 		} catch (Exception e) {
@@ -82,13 +85,17 @@ public class WriteService {
 	}
 
 	private BoardDetail toBoardDetail(int boardNum, WriteRequest writeRequest) {
+		String thumbName = null;
+		if(!writeRequest.getImgNames().isEmpty()) {
+			thumbName = writeRequest.getImgNames().get(0);
+		}
 		BoardDetail boardDetail = 
-				new BoardDetail(boardNum, writeRequest.getTitle(), writeRequest.getPrice(), 0, writeRequest.getCategory(), writeRequest.getLocation(), new Date(), writeRequest.getImgNames().get(0));
+				new BoardDetail(boardNum, writeRequest.getTitle(), writeRequest.getPrice(), 0, writeRequest.getCategory(), writeRequest.getLocation(), new Date(), thumbName);
 		return boardDetail;
 	}
 
 	public BoardContent toBoardContent(int boardNum, WriteRequest writeRequest) {
-		BoardContent boardContent = new BoardContent(boardNum, writeRequest.getWriter().getId(),
+		BoardContent boardContent = new BoardContent(boardNum, writeRequest.getUser2().getId(),
 				writeRequest.getContent(), writeRequest.getProductCondition(), writeRequest.getDeliveryFee());
 		return boardContent;
 	}

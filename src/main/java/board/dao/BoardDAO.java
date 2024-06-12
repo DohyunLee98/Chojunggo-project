@@ -14,9 +14,9 @@ import board.service.Board;
 import board.service.BoardContent;
 import board.service.BoardDetail;
 import board.service.Photo;
-import board.service.Writer;
 import jdbc.JdbcUtil;
 import user.auth.service.User;
+import user.auth.service.User2;
 
 public class BoardDAO {
 
@@ -34,8 +34,8 @@ public class BoardDAO {
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement("insert into board (user_id, user_nickname, trade_status) values (?, ?, '판매 중')");
-			ps.setString(1, board.getWriter().getId());
-			ps.setString(2, board.getWriter().getNickname());
+			ps.setString(1, board.getUser2().getId());
+			ps.setString(2, board.getUser2().getNickname());
 			int insertedCount = ps.executeUpdate();
 
 			if (insertedCount > 0) {
@@ -123,7 +123,7 @@ public class BoardDAO {
 			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				board = new Board(boardNum, new Writer(rs.getString("user_id"), rs.getString("user_nickname")),
+				board = new Board(boardNum, new User2(rs.getString("user_id"), rs.getString("user_nickname")),
 						rs.getString("trade_status"));
 
 				return board;
@@ -201,7 +201,7 @@ public class BoardDAO {
 		try {
 			ps = con.prepareStatement("insert into recent_board (board_num, user_id) values (?, ?)");
 			ps.setInt(1, board.getBoardNum());
-			ps.setString(1, board.getWriter().getId());
+			ps.setString(1, board.getUser2().getId());
 			ps.executeQuery();
 		} finally {
 			JdbcUtil.close(ps);

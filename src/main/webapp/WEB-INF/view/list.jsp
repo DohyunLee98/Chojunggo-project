@@ -15,8 +15,15 @@
 		<div class="header">
 			<h2>판매 글</h2>
 			<label>
+				정렬
+				<select id="sorting" name="sorting" onchange="category()">
+					<option value=" ">정렬 선택</option>
+					
+				</select>
+			</label>
+			<label>
 			<span>카테고리</span> 
-				<select id="category"  name="type" onchange="redirectToServlet()">
+				<select id="category"  name="type" onchange="sorting()">
 					<option value=''>옵션 선택</option>
 					<option value='all'>전체 보기</option>
 					<option value='digital'>디지털</option>
@@ -36,7 +43,7 @@
 					<div class="product-wrapper">
 						<div class="image-wrapper">
 							<img src="image/uploadedImages/${board.thumbName}" width="194"
-								height="194" alt="상품 이미지">
+								height="194" alt="이미지 없음">
 							<div class="badge-area"></div>
 							<div class="overlay"></div>
 						</div>

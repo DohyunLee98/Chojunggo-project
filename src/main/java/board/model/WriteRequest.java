@@ -2,11 +2,11 @@ package board.model;
 
 import java.util.List;
 
-import board.service.Writer;
+import user.auth.service.User2;
 
 public class WriteRequest {
 
-	private Writer writer;
+	private User2 writer;
 	private String title;
 	private String content;
 	private List<String> imgNames;
@@ -19,7 +19,7 @@ public class WriteRequest {
 	public WriteRequest() {
 	}
 
-	public WriteRequest(Writer writer, String title, String content, List<String> imgNames, int price,
+	public WriteRequest(User2 writer, String title, String content, List<String> imgNames, int price,
 			String productCondition, String category, int deliveryFee, String location) {
 		this.writer = writer;
 		this.title = title;
@@ -32,7 +32,7 @@ public class WriteRequest {
 		this.location = location;
 	}
 
-	public Writer getWriter() {
+	public User2 getUser2() {
 		return writer;
 	}
 
