@@ -8,6 +8,7 @@
 <title>초중고 : 로그인</title>
 <link rel = "stylesheet" href = "css/common.css" />
 <link rel = "stylesheet" href = "css/login.css" />
+<link rel = "stylesheet" href = "css/font.css" />
 
 <style>
 
@@ -53,33 +54,14 @@
 		<div class = "mid">
 			<ul>
 			
-				<li><a href = "#">아이디 찾기 ㅣ&nbsp;</a></li>
-				<li><a href = "#">비밀번호 찾기 ㅣ&nbsp;</a></li>
+				<li><a href = "#">아이디 찾기 &nbsp;ㅣ&nbsp;</a></li>
+				<li><a href = "#">비밀번호 찾기 &nbsp;ㅣ&nbsp;</a></li>
 				<li><a href = "join.do">회원가입</a></li>
 				
 			</ul>
 		</div>
 		
-	</div><!-- end #container -->	
-		
-	<!-- <footer>
-	
-		<div class = "footerInner">
-			<ul id = "fiUp">
-			
-				<li><a href = "#">이용약관 ㅣ&nbsp;</a></li>
-				<li><a href = "#">개인정보처리방침 ㅣ&nbsp;</a></li>
-				<li><a href = "#">법적고지 ㅣ&nbsp;</a></li>
-				<li><a href = "#">고객센터</a></li>
-			
-			</ul>
-			
-			<p id = "fiDown"><span>초중고</span> Copyright © 초중고 Corp. All Rights Reserved.</p>
-			
-		</div>end .footerInner
-			
-	</footer> -->
-	
+	</div><!-- end #container -->
 	
 </div><!-- end #wrapper -->
 

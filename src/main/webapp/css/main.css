@@ -29,15 +29,6 @@ main {
     white-space : nowrap;
     
 }
-/* .bannerBox {
-	
-	margin : 200px auto;
-	max-width : 1500px;
-	height : 400px;
-	white-space : nowrap;
-	overflow : hidden;
-	
-} */
 ul.banner {
 	
 	width : 1500px;
@@ -109,15 +100,71 @@ a {
 
 .listBox {
 	
+	position : relative;
 	width : 100%;
 	margin : 0 auto;
 	
+}
+.listBox p {
+	
+	margin-bottom : 40px;
+	text-align : center;
+	font-size : 36px;
+	font-weight : bold;
+	
+}
+.listBox #categories {
+	
+	position : absolute;
+	right : 50px;
+    top : 20px;
+    padding : 10px;
+	
+}
+.button {
+	
+	color : black;
+	background : white;
+	box-shadow : 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    width : 150px;
+	transition : all 0.5s;
+	cursor : pointer;
+	border : 0;
+	
+}
+.button span {
+	
+  	cursor : pointer;
+  	display : inline-block;
+  	position : relative;
+  	transition : 0.5s;
+  	font-size : 20px;
+  	font-weight : bold;
+  	
+}
+.button span::after {
+	
+  	content : '\00bb';
+  	position : absolute;
+  	opacity : 0;
+  	top : -5px;
+  	right : -20px;
+  	transition : 0.5s;
+  	font-size : 30px;
+  	
+}
+.button:hover span {padding-right : 25px;}
+.button:hover span::after {
+	
+  	opacity : 1;
+  	right : 0;
+  	
 }
 
 .mainList {
 	
 	list-style-type : none;
-	margin : 0 auto;
+	margin : 10px auto 0;
 	padding : 0;
 	/* display : flex;
 	flex-wrap : wrap; */
@@ -131,43 +178,55 @@ a {
 }
 .mainList li {
 	
-	position: relative;
-	font-size : 20px;
+	position : relative;
+	font-size : 24px;
 	margin : 0;
 	text-align : center;
-	color: white;
-	box-sizing: border-box;
-	overflow: hidden;
+	color : white;
+	box-sizing : border-box;
+	overflow : hidden;
 	
 }
 .mainList li a {
 	
 	display : block;
 	padding : 120px 0;
+	opacity : 0;
 	
 }
 .mainList li::before {
 	
-	content: '';
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	background-size: cover;
-	background-position: center;
-	opacity: 0.5;
-	z-index: -1;
-	font-size : 0;
+	content : '';
+	position : absolute;
+	top : 0;
+	left : 0;
+	width : 100%;
+	height : 100%;
+	background-size : cover;
+	background-position : center;
+	z-index : -1;
 	
 }
- #digi::before {background-image: url('../image/digital.jpg');}
- #digi:hover {
- 
- 	background : url('../image/digital.jpg') center center / cover no-repeat;
- 	font-size : 30px;
- 	
- }
+.mainList li:hover {
+	
+	transition : all 0.4s;
+	background : #777;
+	
+}
+.mainList li a:hover {
+	
+	opacity : 1;
+	transition : all 0.4s;
+	
+}
+#digi::before {background-image : url('../image/digital.jpg');}
+#furni::before {background-image : url('../image/furniture.jpg');}
+#clothing::before {background-image : url('../image/clothing.jpg');}
+#appliance::before {background-image : url('../image/appliance.jpg');}
+#kitchen::before {background-image : url('../image/kitchenware.jpg');}
+#leisure::before {background-image : url('../image/leisure.jpg');}
+#beauty::before {background-image : url('../image/beauty.jpg');}
+#etc::before {background-image : url('../image/etc.jpg');}
 
 footer {
 	
