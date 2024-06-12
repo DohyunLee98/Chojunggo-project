@@ -14,6 +14,7 @@
 	<div class="container">
 		<div class="header">
 			<h2>판매 글</h2>
+			
 			<label>
 				정렬
 				<select id="sorting" name="sorting" onchange="category()">
@@ -38,7 +39,7 @@
 			</label>
 		</div>
 		<c:forEach var="board" items="${boardPage.content}">
-			<a href="#" class="product-info">
+			<a href="/read.do?no=${board.boardNum}" class="product-info">
 				<div class="product-card">
 					<div class="product-wrapper">
 						<div class="image-wrapper">

@@ -8,7 +8,7 @@ import jdbc.connection.ConnectionProvider;
 
 public class ReadService {
 
-	BoardDAO boardDAO;
+	BoardDAO boardDAO = new BoardDAO();
 	
 	public AssembledBoard getBoard(int boardNum) {
 		try(Connection con = ConnectionProvider.getConnection()){
@@ -16,10 +16,10 @@ public class ReadService {
 			BoardContent content = boardDAO.selectContent(con, boardNum); 
 			BoardDetail detail = boardDAO.selectDetail(con, boardNum);
 			Photo photo = boardDAO.selectPhoto(con, boardNum);
-			
 			return new AssembledBoard(board, detail, content, photo);
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+			e.printStackTrace();
 		}
 		return null;
 	}
