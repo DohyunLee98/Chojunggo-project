@@ -45,7 +45,7 @@
 			
 			<div class = "mainMenu">
 				
-				<button id = "category">카테고리</button>
+				<button id = "category" onclick="location.href='/list.do'" >카테고리</button>
 				
 				<div class = "listBox">
 					<ul id = "mainList" class = "mainList">
