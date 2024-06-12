@@ -16,12 +16,20 @@ main {
 	margin : 0;
 	padding : 0;
 	width : 100%;
-	height : 1000px;
 	
 }
 
 .section input[id *= "banner"] {display : none;}
 .bannerBox {
+	
+    margin: 200px auto;
+    max-width: 1500px;
+    height: 400px;
+    overflow: hidden;
+    white-space : nowrap;
+    
+}
+/* .bannerBox {
 	
 	margin : 200px auto;
 	max-width : 1500px;
@@ -29,10 +37,10 @@ main {
 	white-space : nowrap;
 	overflow : hidden;
 	
-}
+} */
 ul.banner {
 	
-	white-space : nowrap;
+	width : 1500px;
 	font-size : 0;
 	
 }
@@ -80,9 +88,9 @@ ul.banner {
 	
 }
 
-.section [id = "banner01"]:checked ~ .bannerBox .banner > li {transform : translateX(0%);}
-.section [id = "banner02"]:checked ~ .bannerBox .banner > li {transform : translateX(-102%);}	/* 이미지 너비가 작음. 숫자 수정하기 */
-.section [id = "banner03"]:checked ~ .bannerBox .banner > li {transform : translateX(-200%);}
+.section [id = "banner01"]:checked ~ .bannerBox .banner > li {transform : translateX(-2%);}
+.section [id = "banner02"]:checked ~ .bannerBox .banner > li {transform : translateX(-102.8%);}
+.section [id = "banner03"]:checked ~ .bannerBox .banner > li {transform : translateX(-203%);}
 
 a {
 	
@@ -101,7 +109,7 @@ a {
 
 .listBox {
 	
-	width : 1300px;
+	width : 100%;
 	margin : 0 auto;
 	
 }
@@ -109,7 +117,7 @@ a {
 .mainList {
 	
 	list-style-type : none;
-	margin : 0;
+	margin : 0 auto;
 	padding : 0;
 	/* display : flex;
 	flex-wrap : wrap; */
@@ -123,19 +131,43 @@ a {
 }
 .mainList li {
 	
+	position: relative;
 	font-size : 20px;
 	margin : 0;
 	text-align : center;
-	background : #eee;
+	color: white;
+	box-sizing: border-box;
+	overflow: hidden;
 	
 }
-.mainList li:hover {background : #bbb;}
 .mainList li a {
 	
 	display : block;
-	padding : 50px 0;
+	padding : 120px 0;
 	
 }
+.mainList li::before {
+	
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	opacity: 0.5;
+	z-index: -1;
+	font-size : 0;
+	
+}
+ #digi::before {background-image: url('../image/digital.jpg');}
+ #digi:hover {
+ 
+ 	background : url('../image/digital.jpg') center center / cover no-repeat;
+ 	font-size : 30px;
+ 	
+ }
 
 footer {
 	
