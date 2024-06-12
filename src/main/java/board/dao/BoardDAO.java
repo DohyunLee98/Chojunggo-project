@@ -15,7 +15,6 @@ import board.service.BoardContent;
 import board.service.BoardDetail;
 import board.service.Photo;
 import jdbc.JdbcUtil;
-import user.auth.service.User;
 import user.auth.service.User2;
 
 public class BoardDAO {
@@ -161,6 +160,7 @@ public class BoardDAO {
 		BoardDetail detail = null;
 		try {
 			ps = con.prepareStatement("select * from board_detail where board_num = ?");
+			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
 				detail = new BoardDetail(boardNum, rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
