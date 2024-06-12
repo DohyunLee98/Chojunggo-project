@@ -13,10 +13,13 @@ public class LogoutHandler implements CommandHandler {
 	throws Exception {
 		HttpSession session = req.getSession(false);
 		if (session != null) {
-			session.invalidate();
-		}
-		res.sendRedirect(req.getContextPath() + "/main.do");
-		return null;
+            session.invalidate();
+            req.setAttribute("logoutSuccess", "true");
+        } else {
+            req.setAttribute("logoutSuccess", "false");
+        }
+		 req.getRequestDispatcher("/main.do").forward(req, res);
+	        return null;
 	}
 
 }
