@@ -10,24 +10,25 @@
 <link rel="stylesheet" href="/css/write.css">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<script src = "https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="js/write.js"></script>
 </head>
 <body>
-	<script src="js/write.js"></script>
 	<%@ include file="/includes/header.jsp"%>
 	<div class="content-container">
 		<div class="container">
 			<form action="write.do" method="post" enctype="multipart/form-data">
 				<h2 class="section-title">상품정보</h2>
 				<div class="section_img">
-					<div id="preview" class="preview">
-						<p></p>
-					</div>
 					<label>상품이미지</label>
-					<div class="image-upload">
-						<input type="file" id="product-image-input" name="productImage"
+					<div id="img_file" class="image-upload">
+						<input type="file" id="imgUpload" name="productImage"
 							accept="image/*" /> <i class="fas fa-camera"></i>
 						<p>이미지 등록</p>
 					</div>
+					<div id="preview" class="preview">
+                        <p></p>
+                    </div>
 				</div>
 				<hr class="thick-black-line">
 
@@ -66,7 +67,6 @@
 							<option>서울</option>
 							<option>경기</option>
 							<option>부산</option>
-							<option>대구</option>
 							<option>인천</option>
 							<option>광주</option>
 							<option>대전</option>

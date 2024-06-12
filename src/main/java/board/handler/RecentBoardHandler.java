@@ -11,7 +11,7 @@ import board.dao.BoardDAO;
 import board.service.BoardDetail;
 import jdbc.connection.ConnectionProvider;
 import mvc.command.CommandHandler;
-import user.auth.service.User;
+import user.auth.service.User2;
 
 public class RecentBoardHandler implements CommandHandler{
 
@@ -19,7 +19,7 @@ public class RecentBoardHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		
-		User user = (User) req.getSession(false).getAttribute("login");
+		User2 user = (User2) req.getSession(false).getAttribute("login");
 
 		try (Connection con = ConnectionProvider.getConnection()) {
 			List<Integer> boardNumList = boardDAO.selectRecentBoard(con, user); //최근 본 게시판 번호 가져오기
