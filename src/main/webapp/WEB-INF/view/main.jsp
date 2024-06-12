@@ -19,8 +19,7 @@
 		<div class = "section">
 			<input type = "radio" name = "slide" id = "banner01" checked>
 			<input type = "radio" name = "slide" id = "banner02">
-			<input type = "radio" name = "slide" id = "banner03">
-			
+			<input type = "radio" name = "slide" id = "banner03">		
 			<div class = "bannerBox">
 				<ul class = "banner">
 					<li><a href = "#">
