@@ -24,7 +24,7 @@
 			
 			<form id="searchForm" method="get" action = "/list.do" >
 			<div class = "searchbar">
-				<input type = "text" placeholder = "상품명, 지역명 입력">
+				<input name="search" type = "text" placeholder = "상품명, 지역명 입력">
 				<img id = "search" class = "search" src = "image/search.png">
 			</div>
 			</form>
@@ -72,7 +72,7 @@
 
 <script>
 	document.getElementById('top').addEventListener('click', function() {
-	    window.scrollTo({ top: 0, behavior: 'smooth' });
+	    window.scrollTo({ top: 0});
 	});
 </script>
 

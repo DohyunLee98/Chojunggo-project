@@ -227,7 +227,7 @@ public class BoardDAO {
 		}
 	}
 
-	public List<Integer> selectRecentBoard(Connection con, User user) throws SQLException {
+	public List<Integer> selectRecentBoard(Connection con, User2 user) throws SQLException {
 		List<Integer> boardNumList = new ArrayList<Integer>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
