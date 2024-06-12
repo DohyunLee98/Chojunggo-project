@@ -44,15 +44,21 @@
 			
 			<div class = "mainMenu">
 				
-				<button id = "category" onclick="location.href='/list.do'" >카테고리</button>
-				
 				<div class = "listBox">
+					
+					<p>카 테 고 리</p>
+					
+					<button class = "button" style = "vertical-align : middle" 
+						id = "categories" onclick = " location.href = '/list.do' ">
+						<span>전체보기 </span>
+					</button>
+					
 					<ul id = "mainList" class = "mainList">
 					
 						<li id = "digi"><a href = "#">디지털</a></li>
-						<li id = "funi"><a href = "#">가구</a></li>
+						<li id = "furni"><a href = "#">가구</a></li>
 						<li id = "clothing"><a href = "#">의류</a></li>
-						<li id = "applliance"><a href = "#">가전제품</a></li>
+						<li id = "appliance"><a href = "#">가전제품</a></li>
 						<li id = "kitchen"><a href = "#">주방용품</a></li>
 						<li id = "leisure"><a href = "#">스포츠/레저</a></li>
 						<li id = "beauty"><a href = "#">뷰티</a></li>
@@ -68,6 +74,28 @@
 	
 	<!-- footer -->
 	<%@ include file = "/includes/footer.jsp" %>
+	
+	<!-- script -->
+	<input type = "hidden" id = "logoutSuccess" value = "<%= request.getAttribute("logoutSuccess") != null ? request.getAttribute("logoutSuccess") : "" %>">
+
+    <script>
+    
+        $(document).ready(function() {
+            // 로그아웃 성공 여부 확인
+            var logoutSuccess = $('#logoutSuccess').val();
+            
+            if (logoutSuccess === 'true') {
+            	
+                alert('로그아웃이 완료되었습니다.');
+                
+            } else if (logoutSuccess === 'false') {
+            	
+                alert('로그아웃에 실패했습니다. 다시 시도해주세요.');
+                
+            }
+        });
+        
+    </script>
 	
 </body>
 </html>

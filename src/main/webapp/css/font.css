@@ -8,3 +8,13 @@
 	font-style : normal;
 	
 }
+
+@font-face {
+	
+	font-family : 'gmarketSans';
+	src : url('../font/GMARKETSANSTTFMEDIUM_1.woff') format('woff');
+	src : url('../font/GMARKETSANSTTFBOLD_1.woff') format('woff');
+	font-weight : normal, bold;
+	font-style : normal;	
+	
+}

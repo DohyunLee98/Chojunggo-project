@@ -64,10 +64,14 @@
 						<div class = "buttonBox">
 						
 							<div id = "chatBox">
-								<button class = "chat">
+								<form action = "/chat.do">
+								<button class = "chat" onclick = "submit"><!-- 버튼 누를 때 챗점두 -->
 									<img src = "image/chat2.png">
 									<span>채팅</span>
 								</button>
+								<input type = "hidden" name = "writer" value = "${board.id}">
+								<input type = "hidden" name = "title" value = "${board.title}">
+								</form>
 							</div><!-- end #chat -->
 
 							<div id = "buyBox">
