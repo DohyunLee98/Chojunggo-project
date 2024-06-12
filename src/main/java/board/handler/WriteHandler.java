@@ -31,7 +31,7 @@ public class WriteHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		writeService = new WriteService();
-		uploadPath = "C:/project/work/group-project/src/main/webapp/image/uploadedImages";
+		uploadPath = "C:/Users/SJ02/git/Chojunggo-project/src/main/webapp/image/uploadedImages";
 		
 		Writer writer = (Writer) request.getSession(false).getAttribute("login"); // multi로 받아야하는지 확인??
 		MultipartRequest multi = new MultipartRequest(request, uploadPath, 5 * 1024 * 1024, "UTF-8",
