@@ -18,7 +18,7 @@
 	<div class="content-container">
 		<div class="container">
 			<form action="write.do" method="post" enctype="multipart/form-data">
-				<h2 class="section-title">상품정보</h2>
+				<h2 class="section-title">상품정보</h2><h4>*이미지는 최대 4장까지 첨부 가능합니다.</h4>
 				<div class="section_img">
 					<label>상품이미지</label>
 					<div id="img_file" class="image-upload">
