@@ -33,8 +33,7 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			ps = con.prepareStatement(
-					"insert into board (user_id, user_nickname, trade_status) values (?, ?, '판매 중')");
+			ps = con.prepareStatement("insert into board (user_id, user_nickname, trade_status) values (?, ?, '판매 중')");
 			ps.setString(1, board.getWriter().getId());
 			ps.setString(2, board.getWriter().getNickname());
 			int insertedCount = ps.executeUpdate();
@@ -164,8 +163,9 @@ public class BoardDAO {
 			ps = con.prepareStatement("select * from board_detail where board_num = ?");
 			rs = ps.executeQuery();
 			if (rs.next()) {
-				detail = new BoardDetail(boardNum, rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"), rs.getString("category"),
-						rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name"));
+				detail = new BoardDetail(boardNum, rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
+						rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")),
+						rs.getString("thumb_name"));
 				return detail;
 			}
 		} finally {
@@ -196,7 +196,7 @@ public class BoardDAO {
 		}
 	}
 
-	public void insertRecentBoard(Connection con, Board board) throws SQLException{
+	public void insertRecentBoard(Connection con, Board board) throws SQLException {
 		PreparedStatement ps = null;
 		try {
 			ps = con.prepareStatement("insert into recent_board (board_num, user_id) values (?, ?)");
@@ -208,17 +208,17 @@ public class BoardDAO {
 		}
 	}
 
-	public List<BoardDetail> selectAllDetail(Connection con) throws SQLException{
+	public List<BoardDetail> selectAllDetail(Connection con) throws SQLException {
 		List<BoardDetail> boardList = new ArrayList<BoardDetail>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement("select * from board_detail");
 			rs = ps.executeQuery();
-			while(rs.next()) {
-				boardList.add(new BoardDetail(
-						rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
-						rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
+			while (rs.next()) {
+				boardList.add(new BoardDetail(rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"),
+						rs.getInt("likes_cnt"), rs.getString("category"), rs.getString("location"),
+						toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
 			}
 			return boardList;
 		} finally {
@@ -227,7 +227,7 @@ public class BoardDAO {
 		}
 	}
 
-	public List<Integer> selectRecentBoard(Connection con, User user) throws SQLException{
+	public List<Integer> selectRecentBoard(Connection con, User user) throws SQLException {
 		List<Integer> boardNumList = new ArrayList<Integer>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -235,11 +235,11 @@ public class BoardDAO {
 			ps = con.prepareStatement("select board_num from recent_board where user_id = ?");
 			ps.setString(1, user.getId());
 			rs = ps.executeQuery();
-			
-			while(rs.next()) {
+
+			while (rs.next()) {
 				boardNumList.add(rs.getInt("board_num"));
 			}
-			
+
 			return boardNumList;
 		} finally {
 			JdbcUtil.close(rs);
@@ -247,26 +247,76 @@ public class BoardDAO {
 		}
 	}
 
-	public List<BoardDetail> selectDetailById(Connection con, List<Integer> boardNumList) throws SQLException{
+	public List<BoardDetail> selectDetailById(Connection con, List<Integer> boardNumList) throws SQLException {
 		List<BoardDetail> boardList = new ArrayList<BoardDetail>();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			for(int i = 0; i < boardNumList.size(); i++) {
+			for (int i = 0; i < boardNumList.size(); i++) {
 				ps = con.prepareStatement("select * from board_detail where board_num = ?");
 				ps.setInt(1, boardNumList.get(i));
 				rs = ps.executeQuery();
-				
-				if(rs.next()) {
-					boardList.add(new BoardDetail(
-							rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
-							rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
+
+				if (rs.next()) {
+					boardList.add(new BoardDetail(rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"),
+							rs.getInt("likes_cnt"), rs.getString("category"), rs.getString("location"),
+							toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name")));
 				}
 			}
-			return boardList; 
+			return boardList;
 		} finally {
 			JdbcUtil.close(rs);
 			JdbcUtil.close(ps);
 		}
 	}
+
+	public int selectCount(Connection con) throws SQLException {
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			stmt = con.createStatement();
+			rs = stmt.executeQuery("select count(*) from board_detail");
+			if (rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(stmt);
+		}
+	}
+
+	public List<BoardDetail> select(Connection con, int startRow, int size, String category) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			if (category == null || category.equals("all")) {
+				pstmt = con.prepareStatement("select * from board_detail " + "order by board_num desc limit ?, ?");
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, size);
+			} else {
+				pstmt = con.prepareStatement("select * from board_detail where category = ? order by board_num desc limit ?, ?");
+				pstmt.setString(1, category);
+				pstmt.setInt(2, startRow);
+				pstmt.setInt(3, size);
+
+			}
+			rs = pstmt.executeQuery();
+			List<BoardDetail> result = new ArrayList<>();
+			while (rs.next()) {
+				result.add(convertBoardDetail(rs));
+			}
+			return result;
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(pstmt);
+		}
+	}
+
+	private BoardDetail convertBoardDetail(ResultSet rs) throws SQLException {
+		return new BoardDetail(rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"),
+				rs.getInt("likes_cnt"), rs.getString("category"), rs.getString("location"),
+				toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name"));
+	}
+
 }
