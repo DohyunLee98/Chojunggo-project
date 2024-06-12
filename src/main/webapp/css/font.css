@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+@font-face {
+	
+	font-family : 'jungnajoche';
+	src : url('../font/중나좋체-MEDIUM.woff') format('woff');
+	font-weight : normal;
+	font-style : normal;
+	
+}
