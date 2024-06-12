@@ -1,6 +1,8 @@
 package user.command;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,8 +46,24 @@ public class JoinHandler implements CommandHandler {
 		joindto.setAddress(req.getParameter("address")+ " " +req.getParameter("address_detail"));
 		joindto.setAccount(req.getParameter("account"));
 		joindto.setLocation(req.getParameter("location"));
-		joinService.join(joindto);
-		return "/WEB-INF/view/login.jsp";
+		
+		 Map<String, Boolean> errors = new HashMap<>();
+	        req.setAttribute("errors", errors);
+
+	        if (!errors.isEmpty()) {
+	        	 req.setAttribute("success", "false");
+	            return FORM_VIEW;
+	        }
+
+	        try {
+	            joinService.join(joindto);
+	            req.setAttribute("success", "true");
+	            return FORM_VIEW;
+	        } catch (Exception e) {
+	            errors.put("joinFailed", Boolean.TRUE);
+	            req.setAttribute("success", "false");
+	            return FORM_VIEW;
+	        }
 
 	}
 }

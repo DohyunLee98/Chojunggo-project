@@ -8,6 +8,7 @@
 <title>Header</title>
 <link rel = "stylesheet" href = "css/header.css" />
 <link rel = "stylesheet" href = "css/font.css" />
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/header.js"></script>
 </head>
 <body>
@@ -21,11 +22,10 @@
 				</h1>
 			</div>
 			
-			<form action = "" method = "get" >
+			<form id="searchForm" method="get" action = "/list.do" >
 			<div class = "searchbar">
 				<input type = "text" placeholder = "상품명, 지역명 입력">
 				<img id = "search" class = "search" src = "image/search.png">
-				
 			</div>
 			</form>
 	
@@ -49,37 +49,31 @@
 		</div><!-- end #topBar -->
 	</header>
 
-		<div id = "floatBar">
+	<div id = "floatBar">
 		
-			<div class = "float_1">
-				<div class = "float_1_up">최근 본 상품</div>
-				<hr>
-				<div class = "float_1_down">
-					<ul>
+		<div class = "float_1">
+			<div class = "float_1_up">
+				최근 본 상품
+			</div>
+			<hr>
+			<div class = "float_1_down">
+				<ul>
+					<li><a href = "#" id = "noLately"></a></li>
+				</ul>
+				<button id="recentButton" onclick="location.href='/recent.do'">최근 본 상품 목록</button>
+			</div>
+		</div><!-- end .float_1 -->
 
-						<li><a href = "#" id = "noLately"></a></li>
-						<li id = "noLately">최근 본 상품이 없습니다.</li>
-
-					</ul>
-				</div>
-			</div><!-- end .float_1 -->
-
-			<div class = "float_2">
-
-				<button id = "top">TOP</button>
-
-			</div><!-- end .float_2 -->
-			
-		</div><!-- end #floatBar -->
+		<div class = "float_2">
+			<button id = "top">TOP</button>
+		</div><!-- end .float_2 -->
 		
+	</div><!-- end #floatBar -->
+
 <script>
-
 	document.getElementById('top').addEventListener('click', function() {
-		
-	    window.scrollTo({ top: 0 });
-	    
+	    window.scrollTo({ top: 0, behavior: 'smooth' });
 	});
-	
 </script>
 
 </body>
