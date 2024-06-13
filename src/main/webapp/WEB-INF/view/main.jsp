@@ -55,14 +55,14 @@
 					
 					<ul id = "mainList" class = "mainList">
 					
-						<li id = "digi"><a href = "#">디지털</a></li>
-						<li id = "furni"><a href = "#">가구</a></li>
-						<li id = "clothing"><a href = "#">의류</a></li>
-						<li id = "appliance"><a href = "#">가전제품</a></li>
-						<li id = "kitchen"><a href = "#">주방용품</a></li>
-						<li id = "leisure"><a href = "#">스포츠/레저</a></li>
-						<li id = "beauty"><a href = "#">뷰티</a></li>
-						<li id = "etc"><a href = "#">기타</a></li>
+						<li id = "digi"><a href = "/list.do?category=digital">디지털</a></li>
+						<li id = "furni"><a href = "/list.do?category=furniture">가구</a></li>
+						<li id = "clothing"><a href = "/list.do?category=clothes">의류</a></li>
+						<li id = "appliance"><a href = "/list.do?category=appliance">가전제품</a></li>
+						<li id = "kitchen"><a href = "/list.do?category=kitchen">주방용품</a></li>
+						<li id = "leisure"><a href = "/list.do?category=leisure">스포츠/레저</a></li>
+						<li id = "beauty"><a href = "/list.do?category=beauty">뷰티</a></li>
+						<li id = "etc"><a href = "/list.do?category=etc">기타</a></li>
 						
 					</ul>
 				</div><!-- end .listBox -->
