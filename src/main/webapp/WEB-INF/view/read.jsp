@@ -5,43 +5,51 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 상세 페이지</title>
-<link rel = "stylesheet" href = "css/common.css">
-<link rel = "stylesheet" href = "css/read.css">
-<link rel = "stylesheet" href = "//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/read.css">
+<link rel="stylesheet"
+	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 </head>
 <body>
 
-	<%@ include file = "/includes/header.jsp"%>
+	<%@ include file="/includes/header.jsp"%>
 
 	<main>
-		<div id = "wrapper">
-			<div id = "container">
+		<div id="wrapper">
+			<div id="container">
 
-				<div class = "product">
-					<div class = "product1">
+				<div class="product">
+					<div class="product1">
+						<!-- 큰 이미지 박스 -->
+						<div class="large-image-box">
+							<img src="image/uploadedImages/${assemble.boardDetail.thumbName}"
+								alt="이미지 없음">
+						</div>
 
-						<div class = "productImgBox">
-							<div id = "image">
-								<a href = "#"><img src = "image/prd_3_1.jpg"></a>
-							</div>
-						</div><!-- end .productImgBox -->
+						<!-- 작은 이미지 박스들 -->
+						<div class="small-images">
+							<div class="small-image-box"></div>
+							<div class="small-image-box"></div>
+							<div class="small-image-box"></div>
+							<div class="small-image-box"></div>
+						</div>
+					</div>
+					<!-- end .product1 -->
 
-					</div><!-- end .product1 -->
+					<div class="product2">
 
-					<div class = "product2">
+						<div class="productContent">
 
-						<div class = "productContent">
-
-							<div class = "title">
-								<h3>나이키 덩크 로우 범고래</h3>
-								<h2>150,000 원</h2>
+							<div class="title">
+								<h3>${assemble.boardDetail.title}</h3>
+								<h2>${assemble.boardDetail.price}원</h2>
 							</div>
 
 							<hr>
 
-							<div class = "contents">
+							<div class="contents">
 
-								<div id = "contentLeft" class = "content">
+								<div id="contentLeft" class="content">
 									<ul>
 										<li>상품 상태</li>
 										<li>배송비</li>
@@ -49,101 +57,91 @@
 									</ul>
 								</div>
 
-								<div id = "contentRight" class = "content">
+								<div id="contentRight" class="content">
 									<ul>
-										<li>새 상품</li>
-										<li>무료 배송</li>
-										<li>서울특별시 서초구 반포본동</li>
+										<li>${assemble.boardContent.productCondition}</li>
+										<li>${assemble.boardContent.deliveryFee}원</li>
+										<li>${assemble.boardDetail.location}</li>
 									</ul>
 								</div>
 
-							</div><!-- end .content -->
+							</div>
+							<!-- end .content -->
 
-						</div><!-- end .productContent -->
-
-						<div class = "buttonBox">
-						
-							<div id = "chatBox">
-								<form action = "/chat.do">
-								<button class = "chat" onclick = "submit"><!-- 버튼 누를 때 챗점두 -->
-									<img src = "image/chat2.png">
-									<span>채팅</span>
-								</button>
-								<input type = "hidden" name = "writer" value = "${board.id}">
-								<input type = "hidden" name = "title" value = "${board.title}">
-								</form>
-							</div><!-- end #chat -->
-
-							<div id = "buyBox">
-								<button class = "buy">구매하기</button>
-							</div><!-- end #buy -->
-
-						</div><!-- end .buttonBox -->
-
-					</div><!-- end .product2 -->
-				</div><!-- end .product -->
-
-				<div class = "ProductInfostyle__Wrapper-sc-ql55c8-0 gPJVxW">
-					<div class = "ProductInfostyle__HeadLine-sc-ql55c8-1 fscFAw">상품정보</div>
-					<div class = "ProductInfostyle__Description-sc-ql55c8-2 hWujk">
-						<div class = "ProductInfostyle__DescriptionContent-sc-ql55c8-3 eJCiaL">
-							<p style = "width: 663px;">내용을 입력하세요.</p>
 						</div>
-						
-						<div class = "ProductInfostyle__DetailInfo-sc-ql55c8-4 sBGtP">
-							<div class = "ProductInfostyle__Info-sc-ql55c8-5 errcAj">
-								<div class = "ProductInfostyle__InfoTitle-sc-ql55c8-6 jnXffx">
-									<p class = "xi-maker prdInfo"> 직거래지역</p>
+						<!-- end .productContent -->
+
+						<div class="buttonBox">
+
+							<div id="chatBox">
+								<form action="/chat.do" method="post">
+									<button class="chat" onclick="submit">
+										<!-- 버튼 누를 때 챗점두 -->
+										<img src="image/chat2.png"> <span>채팅</span>
+									</button>
+									<input type="hidden" name="writer" value="${board.id}">
+									<input type="hidden" name="title" value="${board.title}">
+								</form>
+							</div>
+							<!-- end #chat -->
+
+							<div id="buyBox">
+								<button class="buy">구매하기</button>
+							</div>
+							<!-- end #buy -->
+
+						</div>
+						<!-- end .buttonBox -->
+
+					</div>
+					<!-- end .product2 -->
+				</div>
+				<!-- end .product -->
+
+				<div class="ProductInfostyle__Wrapper-sc-ql55c8-0 gPJVxW">
+					<div class="ProductInfostyle__HeadLine-sc-ql55c8-1 fscFAw">상품정보</div>
+					<div class="ProductInfostyle__Description-sc-ql55c8-2 hWujk">
+						<div
+							class="ProductInfostyle__DescriptionContent-sc-ql55c8-3 eJCiaL">
+							<p style="width: 663px;">${assemble.boardContent.content}</p>
+						</div>
+
+						<div class="ProductInfostyle__DetailInfo-sc-ql55c8-4 sBGtP">
+							<div class="ProductInfostyle__Info-sc-ql55c8-5 errcAj">
+								<div class="ProductInfostyle__InfoTitle-sc-ql55c8-6 jnXffx">
+									<p class="xi-maker prdInfo">직거래지역</p>
 								</div>
-								
-								<div class = "ProductInfostyle__InfoValue-sc-ql55c8-10 hSkOuU">
+
+								<div class="ProductInfostyle__InfoValue-sc-ql55c8-10 hSkOuU">
 									<div>
-										<span>서울특별시 서초구 반포본동</span>
+										<span>${assemble.boardDetail.location}</span>
 									</div>
 								</div>
 							</div>
-							
-							<div class = "ProductInfostyle__Info-sc-ql55c8-5 errcAj">
-								<div class = "ProductInfostyle__InfoTitle-sc-ql55c8-6 jnXffx">
-									<p class = "xi-paper prdInfo"> 카테고리</p>
+
+							<div class="ProductInfostyle__Info-sc-ql55c8-5 errcAj">
+								<div class="ProductInfostyle__InfoTitle-sc-ql55c8-6 jnXffx">
+									<p class="xi-paper prdInfo">카테고리</p>
 								</div>
-								
-								<div class = "ProductInfostyle__InfoValue-sc-ql55c8-10 hSkOuU">
-									<div class = "ProductInfostyle__Category-sc-ql55c8-8 bevkRX">
-										<a href = "/categories/320?order = date&amp;page = 1&amp;req_ref = popular_category">의류</a>
-											<span class = "ProductInfostyle__CategorySeparator-sc-ql55c8-9 ewtJFK">&gt;</span>
-											
-										<a href = "/categories/320300?order = date&amp;page = 1&amp;req_ref = popular_category">신발</a>
-											<span class = "ProductInfostyle__CategorySeparator-sc-ql55c8-9 ewtJFK">&gt;</span>
-											
-										<a href = "/categories/320300200?order = date&amp;page = 1">운동화</a>
-									</div>
+
+								<div class="ProductInfostyle__InfoValue-sc-ql55c8-10 hSkOuU">
+									<span>${assemble.boardDetail.category}</span>
 								</div>
 							</div>
-							
-							<div class = "ProductInfostyle__Info-sc-ql55c8-5 errcAj">
-							
-								<div class = "ProductInfostyle__InfoTitle-sc-ql55c8-6 jnXffx">
-									<p class = "xi-tag prdInfo"> 상품태그</p>
-								</div>
-								
-								<div class = "ProductInfostyle__InfoValue-sc-ql55c8-10 hSkOuU">
-									<a class = "ProductInfostyle__Tag-sc-ql55c8-7 dDHUHy">#덩크 로우</a>
-									<a class = "ProductInfostyle__Tag-sc-ql55c8-7 dDHUHy">#덩크 로우 범고래</a>
-									<a class = "ProductInfostyle__Tag-sc-ql55c8-7 dDHUHy">#나이키</a>
-									<a class = "ProductInfostyle__Tag-sc-ql55c8-7 dDHUHy">#나이키신발</a>
-								</div>
-								
-							</div>
+
+							<div class="ProductInfostyle__Info-sc-ql55c8-5 errcAj"></div>
 						</div>
 					</div>
-				</div><!-- end .Wrapper-sc-ql55c8-0 -->
+				</div>
+				<!-- end .Wrapper-sc-ql55c8-0 -->
 
-			</div><!-- end #container -->
-		</div><!-- end #wrapper -->
+			</div>
+			<!-- end #container -->
+		</div>
+		<!-- end #wrapper -->
 	</main>
 
-	<%@ include file = "/includes/footer.jsp"%>
+	<%@ include file="/includes/footer.jsp"%>
 
 </body>
 </html>
