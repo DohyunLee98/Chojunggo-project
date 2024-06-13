@@ -1,149 +1,161 @@
 @charset "UTF-8";
 
 body {
-	
-    font-family : Arial, sans-serif;
-    margin : 0;
-    padding : 0;
-    
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 a {
-	
-    text-decoration : none;
-    color : inherit;
-    
+    text-decoration: none;
+    color: inherit;
 }
 
 header {
-	
-    background-color : #ffcc00;
-    padding : 10px 0;
-    
+    background-color: #ffcc00;
+    padding: 10px 0;
 }
 
 #topBar {
-	
-    display : flex;
-    justify-content : space-between;
-    align-items : center;
-    padding : 0 20px;
-    height : 40px;
-    
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 40px;
 }
 
-.title h1 {margin : 0;}
+.title h1 {
+    margin: 0;
+}
+
 .title h1 a {
-	
-    color : #000;
-	font-family : 'jungnajoche';
-    font-size : 28px;
-    
+    color: #000;
+    font-family: 'jungnajoche';
+    font-size: 28px;
 }
 
 .searchbar {
-	
-    display : flex;
-    align-items : center;
-    border : 2px solid #fff;
-    border-radius : 5px;
-    padding : 5px;
-    background-color : #fff;
-    
+    display: flex;
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: #fff;
 }
-.searchbar > input:focus {outline : none;}
-.searchbar input[type = "text"] {
-	
-    border : none;
-    padding : 5px;
-    font-size : 14px;
-    width : 700px;
-    
+
+.searchbar > input:focus {
+    outline: none;
 }
+
+.searchbar input[type="text"] {
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    width: 700px;
+}
+
 .searchbar img.search {
-	
-    width : 20px;
-    height : 20px;
-    margin-left : 5px;
-    cursor : pointer;
-    
+    width: 20px;
+    height: 20px;
+    margin-left: 5px;
+    cursor: pointer;
 }
 
 #bar_right nav ul {
-	
-    list-style : none;
-    display : flex;
-    gap : 15px;
-    margin : 0;
-    padding : 0;
-    
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
 }
+
 #bar_right nav ul li {
-	
-    display : flex;
-    align-items : center;
-    
+    display: flex;
+    align-items: center;
 }
+
 #bar_right nav ul li a img {
-	
-    width : 30px;
-    height : 30px;
-    
+    width: 30px;
+    height: 30px;
 }
 
 #floatBar {
-	
-    position : fixed;
-    right : 20px;
-    bottom : 20px;
-    background-color : #ffcc00;
-    border-radius : 5px;
-    padding : 10px;
-    box-shadow : 0 2px 5px rgba(0, 0, 0, 0.3);
-    
+    position: absolute;
+    right: 20px;
+    top: 100px; /* 초기 위치를 약간 아래로 설정 */
+    background-color: #ffcc00;
+    border-radius: 5px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    transition: top 0.3s ease-out; /* 부드럽게 이동 */
 }
 
-.float_1, .float_2 {margin-bottom : 10px;}
+.float_1, .float_2 {
+    margin-bottom: 10px;
+}
 
 .float_1 ul {
-	
-    list-style : none;
-    margin : 0;
-    padding : 0;
-    
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
-.float_1 li {margin-bottom : 5px;}
-.float_1 hr {
 
-	display : inline-block;
-	border : 1px solid black;
-	width : 90px;
-	
+.float_1 li {
+    margin-bottom: 5px;
 }
-.float_1_up {font-weight : bold;}
+
+.float_1 hr {
+    display: inline-block;
+    border: 1px solid black;
+    width: 90px;
+}
+
+.float_1_up {
+    font-weight: bold;
+}
+
 .float_1_down ul {
-	
-    display : flex;
-    align-items : center;
-    gap : 10px;
-    
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
+
 .float_1_down li {
-	
-    display : flex;
-    align-items : center;
-    
+    display: flex;
+    align-items: center;
 }
-.float_1_down li i {color : #000;}
+
+.float_1_down li i {
+    color: #000;
+}
+
+.float_1_down button {
+    background-color: #007bff; /* 파란색 */
+    color: #fff;
+    border: none;
+    padding: 15px 30px; /* 높이와 너비를 조절합니다. */
+    border-radius: 30px; /* 둥근 모서리 */
+    cursor: pointer;
+    font-size: 16px; /* 폰트 크기를 조절합니다. */
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.float_1_down button:hover {
+    background-color: #0056b3; /* hover 시 더 진한 파란색 */
+}
 
 .float_2 button {
-	
-    background-color : #000;
-    color : #fff;
-    border : none;
-    padding : 10px;
-    border-radius : 5px;
-    cursor : pointer;
-    
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
 }
-.float_2 button:hover {background-color : #333;}
+
+.float_2 button:hover {
+    background-color: #333;
+}

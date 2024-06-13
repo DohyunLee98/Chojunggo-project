@@ -169,8 +169,8 @@ h2 {
 
 .section_img{
     margin-bottom: 20px;
-    display : flex;
-    justify-content : center;
+    display: flex;
+    justify-content: center;
 }
 
 hr.thick-black-line {
@@ -200,8 +200,8 @@ label {
     width: 150px;
     height: 150px;
     margin: 0 auto;
-	align-self : flex-start;
-	margin-right : 10px;
+    align-self: flex-start;
+    margin-right: 10px;
 }
 
 .image-upload input[type="file"] {
@@ -266,6 +266,10 @@ input.small-input {
     border-radius: 4px;
     background-color: #fff;
     appearance: none;
+}
+
+.region-container {
+    gap: 10px; /* Add some space between the select boxes */
 }
 
 .radio-group {
@@ -440,20 +444,19 @@ footer hr {
 }
 
 #preview {
-	display :flex;
-	flex-wrap : wrap;
-	gap : 10px;
-	align-items : flex-start;
-	overflow-x: auto; /* 가로 스크롤 사용 */
-    width: calc(100% - 30px); /* 이미지 업로드 부분의 너비에서 마진 고려 */
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	align-items: flex-start;
+	overflow-x: auto;
+	width: calc(100% - 30px);
 }
 
 #preview img {
 	width: 150px;
-	height : 190px;
-	object-fit : cover;
-	border : 1px solid #000;
-	
+	height: 190px;
+	object-fit: cover;
+	border: 1px solid #000;
 }
 
 .image-container {
@@ -465,12 +468,12 @@ footer hr {
     position: absolute;
     top: 0;
     right: 0;
-    background-color: rgba(255, 255, 255, 0.5); /* 배경 투명도 조절 */
+    background-color: rgba(255, 255, 255, 0.5);
     border: none;
     color: red;
     font-size: 12px;
     cursor: pointer;
     padding: 3px;
-    border-radius: 50%; /* 원형 모양 */
-    z-index: 1; /* 다른 내용 위에 표시되도록 */
+    border-radius: 50%;
+    z-index: 1;
 }
