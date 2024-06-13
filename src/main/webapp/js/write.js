@@ -1,61 +1,44 @@
 $(document).ready(function() {
+    // Trigger file input click when .image-upload is clicked
+    $(document).on('click', '.image-upload', function() {
+        $(this).find("input[type='file']").click();
+    });
 
-	$("#imgUpload").change(function(event) {
-		var preview = $("#preview");
-		var file = event.target.files;
+    // When file input changes (image is selected)
+    $(document).on('change', "input[type='file']", function(event) {
+        var preview = $("#preview");
+        var file = event.target.files[0];
 
-		/*var imgCount = preview.querySelectorAll('img').length;*/
-		var imgCount = preview.find('img').length;
-		var newImg = file.length;
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            var imgContainer = $('<img src="' + e.target.result + '" alt="Uploaded Image"><button type="button" class="delete-button">X</button>');
+            var parentDiv = $(event.target).closest('.image-upload');
+            parentDiv.append(imgContainer);
 
-		if (imgCount + newImg > 4) {
-			alert("이미지는 최대 4개까지 업로드 가능합니다.");
-			return;
-		}
+           
+            parentDiv.css('border', 'none');
+            parentDiv.find('input[type="file"]').hide();
+            parentDiv.find("i, p").hide();
+            parentDiv.addClass('has-image');
+        }
+        reader.readAsDataURL(file);
 
-		if (preview.children.length === 1 && preview.children().first().is('p')) {
-			preview.html('');
-		}
+        $(this).val(''); 
+    });
 
-		Array.from(file).forEach(file => {
-			var reader = new FileReader();
+    $(document).on('click', '.delete-button', function() {
+        var parentDiv = $(this).parent();
 
-			reader.onload = function(e) {
-				/*var img = document.createElement('img');
-				img.src = e.target.result;
-				preview.appendChild(img);*/
-				/*var img = $('<img>').attr('src', e.target.result);*/
-				var img = $('<div class="image-container"><img src="' + e.target.result + '"><button type="button" class="delete-button">X</button></div>');
+        parentDiv.css('border', '2px dashed #ccc');
+        parentDiv.find('img').remove();
+        parentDiv.find('button').remove();
+        parentDiv.find('input[type="file"]').val('').show();
+        parentDiv.find("i, p").show();
+        parentDiv.removeClass('has-image');
 
-				preview.append(img);
-
-				// 똑같은 이름의 이미지 연속으로 등록 시 등록 안되는 현상 발생 **
-			}
-			reader.readAsDataURL(file);
-		});
-
-		if (file.length + preview.find('img').length >= 4) {
-			$('#img_file').hide();
-		} else {
-			$('#img_file').show();
-		}
-	});
+        var preview = $("#preview");
+        if (preview.find('.image-upload.has-image').length < 4) {
+            $('.image-upload:hidden').first().show();
+        }
+    });
 });
-
-$(document).on('click', '.delete-button', function() {
-	var preview = $("#preview");
-	var file = $("#imgUpload")[0].files;
-
-	if (file.length + preview.find('img').length <= 3) {
-		$('#img_file').show();
-	}
-	$(this).parent().remove();
-});
-
-/*$(document).on('click', '.delete-button', function() {
-
-	if (file.length + preview.find('img').length < 3) {
-		$('#img_file').show();
-	}
-	$(this).parent().remove();
-});*/

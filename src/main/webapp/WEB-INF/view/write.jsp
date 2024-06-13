@@ -25,14 +25,28 @@
                 <h4>*이미지는 최대 4장까지 첨부 가능합니다.</h4>
                 <div class="section_img">
                     <label>상품이미지</label>
-                    <div id="img_file" class="image-upload">
-                        <input type="file" id="imgUpload" name="productImage" accept="image/*" />
-                        <i class="fas fa-camera"></i>
-                        <p>이미지 등록</p>
-                    </div>
-                    <div id="preview" class="preview">
-                        <p></p>
-                    </div>
+                    <div id="preview">
+						<div class="image-upload" id="img_file1">
+							<input type="file" id="imgUpload1" name="productImage1"
+								accept="image/*" /> <i class="fas fa-camera"></i>
+							<p>이미지 등록</p>
+						</div>
+						<div class="image-upload" id="img_file2">
+							<input type="file" id="imgUpload2" name="productImage2"
+								accept="image/*" /> <i class="fas fa-camera"></i>
+							<p>이미지 등록</p>
+						</div>
+						<div class="image-upload" id="img_file3">
+							<input type="file" id="imgUpload3" name="productImage3"
+								accept="image/*" /> <i class="fas fa-camera"></i>
+							<p>이미지 등록</p>
+						</div>
+						<div class="image-upload" id="img_file4">
+							<input type="file" id="imgUpload4" name="productImage4"
+								accept="image/*" /> <i class="fas fa-camera"></i>
+							<p>이미지 등록</p>
+						</div>
+					</div>
                 </div>
                 <hr class="thick-black-line">
 
