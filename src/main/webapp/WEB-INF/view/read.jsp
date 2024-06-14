@@ -44,6 +44,10 @@
 								<h3>${assemble.boardDetail.title}</h3>
 								<h2>${assemble.boardDetail.price}원</h2>
 							</div>
+							
+							<div class = "author">
+								<p>작 성 자 : ${user2.nickname}</p>
+							</div>
 
 							<hr>
 
@@ -59,9 +63,9 @@
 
 								<div id="contentRight" class="content">
 									<ul>
-										<li>${assemble.boardContent.productCondition}</li>
-										<li>${assemble.boardContent.deliveryFee}원</li>
-										<li>${assemble.boardDetail.location}</li>
+										<li>: ${assemble.boardContent.productCondition}</li>
+										<li>: &nbsp;&nbsp;${assemble.boardContent.deliveryFee}원</li>
+										<li>: ${assemble.boardDetail.location}</li>
 									</ul>
 								</div>
 
@@ -97,7 +101,9 @@
 					<!-- end .product2 -->
 				</div>
 				<!-- end .product -->
-
+				
+				<hr class = "productLine">
+				
 				<div class="ProductInfostyle__Wrapper-sc-ql55c8-0 gPJVxW">
 					<div class="ProductInfostyle__HeadLine-sc-ql55c8-1 fscFAw">상품정보</div>
 					<div class="ProductInfostyle__Description-sc-ql55c8-2 hWujk">

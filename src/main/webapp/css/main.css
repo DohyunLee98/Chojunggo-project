@@ -33,6 +33,7 @@ ul.banner {
 	
 	width : 1500px;
 	font-size : 0;
+	animation : slide 12s infinite step-end;
 	
 }
 .banner > li {
@@ -66,22 +67,15 @@ ul.banner {
 	cursor : pointer;
 	
 }
-.banner .left {
-	
-	left : 30px;
-	background : url('/image/left.png') center center / 100% no-repeat;
-	
-}
-.banner .right {
-	
-	right : 30px;
-	background : url('/image/right.png') center center / 100% no-repeat;
-	
-}
 
-.section [id = "banner01"]:checked ~ .bannerBox .banner > li {transform : translateX(-2%);}
-.section [id = "banner02"]:checked ~ .bannerBox .banner > li {transform : translateX(-102.8%);}
-.section [id = "banner03"]:checked ~ .bannerBox .banner > li {transform : translateX(-203%);}
+@keyframes slide {
+	
+	0% {margin-left : -2%;}
+	33% {margin-left : -102.8%;}
+	66% {margin-left : -203%;}
+	100% {margin-left : 0%;}
+	
+}
 
 a {
 	
