@@ -35,7 +35,7 @@ public class WriteHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		writeService = new WriteService();
-		uploadPath = "C:/Users/SJ02/git/Chojunggo-project/src/main/webapp/image/uploadedImages";
+		uploadPath = "C:\\Users\\user\\git\\Chojunggo-project\\src\\main\\webapp\\image\\uploadedImages";
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 
@@ -49,7 +49,7 @@ public class WriteHandler implements CommandHandler {
 		int boardNum = writeService.insertContent(writeRequest);
 		request.setAttribute("boardNum", boardNum);
 
-		return "/list.do";
+		return "/success.do";
 	}
 
 	private WriteRequest toWriteRequest(MultipartRequest multi, User2 writer, Map<String, Boolean> errors)

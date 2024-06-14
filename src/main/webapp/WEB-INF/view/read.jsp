@@ -9,6 +9,9 @@
 <link rel="stylesheet" href="css/read.css">
 <link rel="stylesheet"
 	href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+	<script src = "https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script src="https://cdn.iamport.kr/js/iamport.payment-1.1.8.js"></script>
+	<script src="js/read.js"></script>
 </head>
 <body>
 
@@ -22,16 +25,18 @@
 					<div class="product1">
 						<!-- 큰 이미지 박스 -->
 						<div class="large-image-box">
-							<img src="image/uploadedImages/${assemble.boardDetail.thumbName}"
+						<div id ="bigImg">
+							<img id="big" src="image/uploadedImages/${assemble.boardDetail.thumbName}"
 								alt="이미지 없음">
 						</div>
-
+							</div>
+							
 						<!-- 작은 이미지 박스들 -->
-						<div class="small-images">
-							<div class="small-image-box"></div>
-							<div class="small-image-box"></div>
-							<div class="small-image-box"></div>
-							<div class="small-image-box"></div>
+						<div id="smallImg" class="small-images">
+							<div class="small-image-box"><img id="small1" src="image/login.png" ></div>
+							<div class="small-image-box"><img id="small2" src="image/logout.png"></div>
+							<div class="small-image-box"><img id="small3" src="image/right.png" ></div>
+							<div class="small-image-box"><img id="small4" src="image/left.png" ></div>
 						</div>
 					</div>
 					<!-- end .product1 -->
@@ -90,7 +95,7 @@
 							<!-- end #chat -->
 
 							<div id="buyBox">
-								<button class="buy">구매하기</button>
+								<button id="buy" type="button" class="buy">구매하기</button>
 							</div>
 							<!-- end #buy -->
 

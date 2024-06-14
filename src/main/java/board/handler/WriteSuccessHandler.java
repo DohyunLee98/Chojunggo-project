@@ -13,7 +13,7 @@ public class WriteSuccessHandler implements CommandHandler{
 		BoardDAO boardDAO = new BoardDAO();
 		req.setAttribute("boardNum", boardDAO.selectBoardNum());
 		
-		return "writeSuccess.jsp";
+		return "/WEB-INF/view/writeSuccess.jsp";
 	}
 
 	
