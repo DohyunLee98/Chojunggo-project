@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+body {font-family: 'gmarketSans';}
+
 .container {
 	width: 60%;
 	margin: 0 auto 200px;

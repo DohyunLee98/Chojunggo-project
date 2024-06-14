@@ -1,4 +1,7 @@
 /* Container for each product card */
+
+body {font-family: 'gmarketSans';}
+
 .product-card {
     width: 194px;
     margin: 10px;
