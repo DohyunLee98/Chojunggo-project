@@ -9,7 +9,7 @@
 <title>상품 정보</title>
 <link rel="stylesheet" href="/css/write.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script> -->
 <script src="js/write.js"></script>
 <script src="js/location.js"></script>
 <style>
@@ -65,8 +65,8 @@
                             <option value="digital">디지털</option>
                             <option value="furniture">가구</option>
                             <option value="clothes">의류</option>
-                            <option value="furniture">가전제품</option>
-                            <option value="appliance">주방용품</option>
+                            <option value="appliance">가전제품</option>
+                            <option value="kitchen">주방용품</option>
                             <option value="leisure">스포츠/레저</option>
                             <option value="beauty">뷰티</option>
                             <option value="etc">기타</option>
