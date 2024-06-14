@@ -22,7 +22,7 @@
 			
 			<form id="searchForm" method="get" action="/list.do">
 			<div class="searchbar">
-				<input name="search" type="text" placeholder="상품명, 지역명 입력">
+				<input name="searchWord" type="text" placeholder="상품명, 지역명 입력">
 				<img id="search" class="search" src="image/search.png">
 			</div>
 			</form>
