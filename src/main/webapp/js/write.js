@@ -1,44 +1,80 @@
-$(document).ready(function() {
-    // Trigger file input click when .image-upload is clicked
-    $(document).on('click', '.image-upload', function() {
-        $(this).find("input[type='file']").click();
+document.addEventListener('DOMContentLoaded', function() {
+ 
+    document.querySelectorAll('.image-upload').forEach(function(element) {
+        element.addEventListener('click', function(event) {
+            
+            if (!event.target.classList.contains('delete-button')) {
+                var fileInput = this.querySelector("input[type='file']");
+               /* if (fileInput) {
+                    fileInput.click();
+                }
+                */
+                event.stopPropagation();
+            }
+        });
     });
 
-    // When file input changes (image is selected)
-    $(document).on('change', "input[type='file']", function(event) {
-        var preview = $("#preview");
-        var file = event.target.files[0];
 
-        var reader = new FileReader();
-        reader.onload = function(e) {
-            var imgContainer = $('<img src="' + e.target.result + '" alt="Uploaded Image"><button type="button" class="delete-button">X</button>');
-            var parentDiv = $(event.target).closest('.image-upload');
-            parentDiv.append(imgContainer);
+    document.querySelectorAll("input[type='file']").forEach(function(fileInput) {
+        fileInput.addEventListener('change', function(event) {
+            var file = event.target.files[0];
+            
+            if (!file) return;
 
-           
-            parentDiv.css('border', 'none');
-            parentDiv.find('input[type="file"]').hide();
-            parentDiv.find("i, p").hide();
-            parentDiv.addClass('has-image');
-        }
-        reader.readAsDataURL(file);
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                var imgContainer = document.createElement('div');
+                var img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = "Uploaded Image";
+                var deleteButton = document.createElement('button');
+                deleteButton.type = 'button';
+                deleteButton.className = 'delete-button';
+                deleteButton.textContent = 'X';
 
-        $(this).val(''); 
+                imgContainer.appendChild(img);
+                imgContainer.appendChild(deleteButton);
+
+                var parentDiv = event.target.closest('.image-upload');
+                parentDiv.appendChild(imgContainer);
+
+                parentDiv.style.border = 'none';
+                fileInput.style.display = 'none';
+                var icon = parentDiv.querySelector("i");
+                var paragraph = parentDiv.querySelector("p");
+                if (icon) icon.style.display = 'none';
+                if (paragraph) paragraph.style.display = 'none';
+                parentDiv.classList.add('has-image');
+            }
+            reader.readAsDataURL(file);
+        });
     });
 
-    $(document).on('click', '.delete-button', function() {
-        var parentDiv = $(this).parent();
+    document.addEventListener('click', function(event) {
+        if (event.target.classList.contains('delete-button')) {
+            var parentDiv = event.target.closest('.image-upload');
 
-        parentDiv.css('border', '2px dashed #ccc');
-        parentDiv.find('img').remove();
-        parentDiv.find('button').remove();
-        parentDiv.find('input[type="file"]').val('').show();
-        parentDiv.find("i, p").show();
-        parentDiv.removeClass('has-image');
+            parentDiv.style.border = '2px dashed #ccc';
+            var img = parentDiv.querySelector('img');
+            var deleteButton = parentDiv.querySelector('.delete-button');
+            if (img) img.remove();
+            if (deleteButton) deleteButton.remove();
+            var fileInput = parentDiv.querySelector('input[type="file"]');
+            fileInput.value = '';
+            fileInput.style.display = 'block';
+            var icon = parentDiv.querySelector("i");
+            var paragraph = parentDiv.querySelector("p");
+            if (icon) icon.style.display = 'block';
+            if (paragraph) paragraph.style.display = 'block';
+            parentDiv.classList.remove('has-image');
 
-        var preview = $("#preview");
-        if (preview.find('.image-upload.has-image').length < 4) {
-            $('.image-upload:hidden').first().show();
+            var preview = document.getElementById("preview");
+            if (preview.querySelectorAll('.image-upload.has-image').length < 4) {
+                var hiddenUploads = document.querySelectorAll('.image-upload[style="display: none;"]');
+                if (hiddenUploads.length > 0) {
+                    hiddenUploads[0].style.display = 'block';
+                }
+            }
         }
     });
 });

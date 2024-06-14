@@ -35,7 +35,7 @@ public class WriteHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		writeService = new WriteService();
-		uploadPath = "C:/Users/user/git/Chojunggo-project/src/main/webapp/image/uploadedImages";
+		uploadPath = "C:/Users/SJ02/git/Chojunggo-project/src/main/webapp/image/uploadedImages";
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 
@@ -47,7 +47,6 @@ public class WriteHandler implements CommandHandler {
 			return "/WEB-INF/view/write.jsp";
 		}
 		int boardNum = writeService.insertContent(writeRequest);
-		System.out.println(boardNum);
 		request.setAttribute("boardNum", boardNum);
 
 		return "/list.do";
@@ -67,7 +66,7 @@ public class WriteHandler implements CommandHandler {
 			deliveryFee = Integer.parseInt(multi.getParameter("deliveryFee"));
 		}
 		
-		String location = multi.getParameter("location");
+		String location = multi.getParameter("h_area1") + multi.getParameter("h_area2");
 		List<String> imageList = writeService.uploadImages(multi, writer, uploadPath);
 		if (title == null || title.length() == 0) {
 			errors.put("title", true);
@@ -89,9 +88,6 @@ public class WriteHandler implements CommandHandler {
 		}
 
 		if (!errors.isEmpty()) {
-			Iterator it = errors.keySet().iterator();
-			while(it.hasNext())
-				System.out.println(it.next());
 			return null;
 		}
 

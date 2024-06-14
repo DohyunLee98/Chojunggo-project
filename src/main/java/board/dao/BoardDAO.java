@@ -15,6 +15,7 @@ import board.service.BoardContent;
 import board.service.BoardDetail;
 import board.service.Photo;
 import jdbc.JdbcUtil;
+import jdbc.connection.ConnectionProvider;
 import user.auth.service.User2;
 
 public class BoardDAO {
@@ -100,7 +101,7 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		try {
 			for (int i = 0; i < photos.getImageName().size(); i++) {
-				ps = con.prepareStatement("insert into photo (board_num, original_name) values (?, ?)");
+				ps = con.prepareStatement("insert into photo (board_num, image_name) values (?, ?)");
 				ps.setInt(1, photos.getBoardNum());
 				ps.setString(2, photos.getImageName().get(i));
 				ps.executeUpdate();
@@ -143,8 +144,9 @@ public class BoardDAO {
 			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
+				String productCondition = convertProductCondtion(rs.getString("product_condition"));
 				content = new BoardContent(boardNum, rs.getString("user_id"), rs.getString("content"),
-						rs.getString("product_condition"), rs.getInt("delivery_fee"));
+						productCondition, rs.getInt("delivery_fee"));
 				return content;
 			}
 		} finally {
@@ -152,6 +154,16 @@ public class BoardDAO {
 			JdbcUtil.close(ps);
 		}
 		return null;
+	}
+
+	private String convertProductCondtion(String selected) {
+		String productCondition = null;
+		if(selected.equals("new")) productCondition="새 상품";
+		if(selected.equals("no-wear")) productCondition="사용감 없음";
+		if(selected.equals("slight-wear")) productCondition="사용감 적음";
+		if(selected.equals("visible-wear")) productCondition="사용감 많음";
+		if(selected.equals("damaged")) productCondition="고장/파손 상품";
+		return productCondition;
 	}
 
 	public BoardDetail selectDetail(Connection con, Integer boardNum) throws SQLException {
@@ -163,8 +175,9 @@ public class BoardDAO {
 			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			if (rs.next()) {
+				String category = convertCategory(rs.getString("category"));
 				detail = new BoardDetail(boardNum, rs.getString("title"), rs.getInt("price"), rs.getInt("likes_cnt"),
-						rs.getString("category"), rs.getString("location"), toDate(rs.getTimestamp("created_date")),
+						category, rs.getString("location"), toDate(rs.getTimestamp("created_date")),
 						rs.getString("thumb_name"));
 				return detail;
 			}
@@ -173,6 +186,19 @@ public class BoardDAO {
 			JdbcUtil.close(ps);
 		}
 		return null;
+	}
+
+	private String convertCategory(String selected) {
+		String category = null;
+		if(selected.equals("digital")) category="디지털";
+		if(selected.equals("furniture")) category="가구";
+		if(selected.equals("clothes")) category="의류";
+		if(selected.equals("appliance")) category="가전제품";
+		if(selected.equals("kitchen")) category="주방용품";
+		if(selected.equals("leisure")) category="스포츠/레저";
+		if(selected.equals("beauty")) category="뷰티";
+		if(selected.equals("etc")) category="기타";
+		return category;
 	}
 
 	public Photo selectPhoto(Connection con, int boardNum) throws SQLException {
@@ -185,7 +211,7 @@ public class BoardDAO {
 			ps.setInt(1, boardNum);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				imageList.add(rs.getString("original_name"));
+				imageList.add(rs.getString("image_name"));
 			}
 			photo = new Photo(boardNum, imageList);
 			return photo;
@@ -201,8 +227,8 @@ public class BoardDAO {
 		try {
 			ps = con.prepareStatement("insert into recent_board (board_num, user_id) values (?, ?)");
 			ps.setInt(1, board.getBoardNum());
-			ps.setString(1, board.getUser2().getId());
-			ps.executeQuery();
+			ps.setString(2, board.getUser2().getId());
+			ps.executeUpdate();
 		} finally {
 			JdbcUtil.close(ps);
 		}
@@ -232,7 +258,7 @@ public class BoardDAO {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			ps = con.prepareStatement("select board_num from recent_board where user_id = ?");
+			ps = con.prepareStatement("select board_num from recent_board where user_id = ? order by board_num desc");
 			ps.setString(1, user.getId());
 			rs = ps.executeQuery();
 
@@ -286,21 +312,21 @@ public class BoardDAO {
 		}
 	}
 
-	public List<BoardDetail> select(Connection con, int startRow, int size, String category) throws SQLException {
+	public List<BoardDetail> select(Connection con, int startRow, int size, String category, String sort) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			if (category == null || category.equals("all")) {
-				pstmt = con.prepareStatement("select * from board_detail " + "order by board_num desc limit ?, ?");
-				pstmt.setInt(1, startRow);
-				pstmt.setInt(2, size);
-			} else {
-				pstmt = con.prepareStatement("select * from board_detail where category = ? order by board_num desc limit ?, ?");
-				pstmt.setString(1, category);
-				pstmt.setInt(2, startRow);
-				pstmt.setInt(3, size);
-
+			String query = makeQuery(category, sort);
+			int parametersCNT = countParameters(query);
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(parametersCNT, size);
+			pstmt.setInt(parametersCNT-1, startRow);
+			
+			if(category == null || category.equals("all")) {	}
+			else {
+				pstmt.setString(parametersCNT-2, category);
 			}
+
 			rs = pstmt.executeQuery();
 			List<BoardDetail> result = new ArrayList<>();
 			while (rs.next()) {
@@ -313,10 +339,58 @@ public class BoardDAO {
 		}
 	}
 
+	private String makeQuery(String category, String sort) {
+		String query = "select * from board_detail";
+		if(category == null || category.equals("all")) {	}
+		else {
+			query += " where category = ?";
+		}
+		
+		if(sort == null) {
+			query += " order by board_num desc";
+		}else {
+			query += sort;
+		}
+		query += " limit ?, ?";
+		
+		return query;
+	}
+	
+	private int countParameters(String sql) {
+        int count = 0;
+        for (char c : sql.toCharArray()) {
+            if (c == '?') {
+                count++;
+            }
+        }
+        return count;
+    }
+	
 	private BoardDetail convertBoardDetail(ResultSet rs) throws SQLException {
 		return new BoardDetail(rs.getInt("board_num"), rs.getString("title"), rs.getInt("price"),
 				rs.getInt("likes_cnt"), rs.getString("category"), rs.getString("location"),
 				toDate(rs.getTimestamp("created_date")), rs.getString("thumb_name"));
+	}
+
+	public int selectBoardNum() {
+		Connection con = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			con = ConnectionProvider.getConnection();
+			ps = con.prepareStatement("select max(board_num) from board;");
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcUtil.close(rs);
+			JdbcUtil.close(ps);
+			JdbcUtil.close(con);
+		}
+		return 0;
 	}
 
 }

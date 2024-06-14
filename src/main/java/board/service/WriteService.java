@@ -24,10 +24,7 @@ public class WriteService {
 		imageList = new ArrayList<>();
 		uploadPath = path;
 
-		checkDirectory(uploadPath);
-
 		Enumeration files = multi.getFileNames();
-
 		imageList = renameImage(multi, files); // 이미지 이름 변경
 
 		return imageList;
@@ -43,7 +40,9 @@ public class WriteService {
 				File originFile = new File(uploadPath + "/" + fileName);
 				String originFileName = originFile.getName();
 				String ext = originFileName.substring(originFileName.lastIndexOf("."));
-				String renamedFile = System.currentTimeMillis() + ext;
+				Long currentTime = System.currentTimeMillis();
+				String time = currentTime.toString();
+				String renamedFile = time+ ext; 
 				File tempFile = new File(uploadPath + "/" + renamedFile);
 
 				if (!originFile.renameTo(tempFile)) {
@@ -51,15 +50,8 @@ public class WriteService {
 				}
 				imageList.add(renamedFile);
 			}
-
 		}
 		return imageList;
-	}
-
-	private void checkDirectory(String uploadPath) {
-		File uploadDir = new File(uploadPath);
-		if (!uploadDir.exists())
-			uploadDir.mkdirs(); // 해당 폴더가 없을 경우 생성
 	}
 
 	public int insertContent(WriteRequest writeRequest) throws Exception {
