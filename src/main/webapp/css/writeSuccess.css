@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+#container {
+	
+	margin : 100px auto 410px;
+	padding : 0;
+	display : flex;
+	flex-direction : column;
+	justify-content : center;
+	
+}
+
+.pBox, .goBox {
+	
+	margin : 0 auto;
+	padding : 0;
+	
+}
+
+.pBox {margin-bottom : 30px;}
+.pBox p {
+	
+	width : 100%;
+	text-align : center;
+	
+}
+.pBox .xi-document {margin-bottom : 10px;}
+.pBox .content {color : #777;}
+.success {
+	
+	font-size : 22px;
+	font-weight : bold;
+	color : black;
+	
+}
+
+.goBox > input {
+	
+	margin : 0 5px;
+	padding : 15px 50px;
+	font-size : 16px;
+	font-weight : bold;
+	border : 0;
+	cursor : pointer;
+	
+}
+.goList {background : #eee;}
+.goRead {
+	
+	background : black;
+	color : white;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

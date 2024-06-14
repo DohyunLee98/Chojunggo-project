@@ -37,8 +37,8 @@
             <label>* 별명</label>
             <input type="text" name="nickname"><br>
             <label>주소</label>
-            <input type="text" name="zipcode" id="post" placeholder="우편번호">
             <button type="button" id="post_find">우편번호찾기</button><br>
+            <input type="text" name="zipcode" id="post" placeholder="우편번호">
             <input type="text" name="address" id="address" placeholder="주소"><br>
             <input type="text" name="address_detail" id="address2" placeholder="상세주소"><br>
             <label>* 거래 선호 지역</label>

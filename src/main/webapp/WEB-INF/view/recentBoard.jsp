@@ -16,7 +16,7 @@
 	<%@ include file="/includes/header.jsp"%>
 	<div class="container">
 		<div class="header">
-			<h4>최근 본 상품</h4>
+			<h2>최근 본 상품</h2>
 		</div>
 		<c:if test="${not empty board}">
 		<c:forEach var="board" items="${board}">

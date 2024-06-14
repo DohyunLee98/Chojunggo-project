@@ -24,28 +24,46 @@
 	<%@ include file="/includes/header.jsp"%>
 	<div class="container">
 		<div class="header">
+		
 			<h2>판매 글</h2>
-
-			<label> 정렬 <select id="sorting" name="sorting"
-				onchange="category()">
-					<option value=" ">정렬 선택</option>
-
-			</select>
-			</label> <label> <span>카테고리</span> <select id="category" name="type"
-				onchange="sorting()">
-					<option value=''>옵션 선택</option>
-					<option value='all'>전체 보기</option>
-					<option value='digital'>디지털</option>
-					<option value='clothes'>의류</option>
-					<option value='furniture'>가구</option>
-					<option value='appliance'>가전제품</option>
-					<option value='kitchen'>주방용품</option>
-					<option value='leisure'>스포츠/레저</option>
-					<option value='beauty'>뷰티</option>
-					<option value='etc'>기타</option>
-			</select>
-			</label>
-		</div>
+			
+			<div class = "labelBox">
+				<label> <span>카테고리</span> 
+				<select id="category" name="type" onchange="category()">
+				
+						<option value=''>옵션 선택</option>
+						<option value='all'>전체 보기</option>
+						<option value='digital'>디지털</option>
+						<option value='clothes'>의류</option>
+						<option value='furniture'>가구</option>
+						<option value='appliance'>가전제품</option>
+						<option value='kitchen'>주방용품</option>
+						<option value='leisure'>스포츠/레저</option>
+						<option value='beauty'>뷰티</option>
+						<option value='etc'>기타</option>
+						
+				</select>
+				</label>
+			
+				<label class = "labelRight"> <span>정렬</span> 
+				<select id="sorting" name="sorting"
+					onchange="sorting()">
+						<option value="order by board_num desc">최신 순</option>
+						<option value="order by board_num">오래된 순</option>
+						<option value="order by price desc">높은 가격 순</option>
+						<option value="order by price">낮은 가격 순</option>
+	
+				</select>
+				</label>
+				
+				<div class = "btnBox">
+					<button type = "button" name = "btn"
+						onclick = "location.href = '' " id = "btn" >검색</button>
+				</div>
+				
+			</div><!-- end .labelBox -->
+		</div><!-- end .header -->
+		
 		<c:forEach var="board" items="${boardPage.content}">
 			<a href="/read.do?no=${board.boardNum}" class="product-info">
 				<div class="product-card">

@@ -110,7 +110,57 @@
 	padding-bottom: 10px;
 	border-bottom: 2px solid #000;
 }
+.labelBox {
+	
+	display : flex;
+	align-items : center;
+	
+}
+.labelBox .labelRight {margin : 0 10px;}
+.labelBox span {
 
+	font-size : 17px;
+	font-weight : bold;
+	
+}
+.labelBox select {
+	
+	appearance : none; /*기본 스타일 제거 */
+	-webkit-appearance : none;
+	-moz-appearance : none;
+	background : #f0f0f0;
+	border : 1px solid #ccc;
+	border-radius : 0;
+	padding : 10px;
+	font-size: 16px;
+	width: 130px;
+	
+}
+.labelBox select:focus {
+	
+	border-color : #007bff;
+	outline: none;
+	
+}
+.labelBox select:focus option {
+	
+	background : #007bff;
+	color : white;
+	
+}
+.btnBox #btn {
+	
+	padding : 10px;
+	background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+	
+}
+.btnBox #btn:hover {background : #333;}
+/*============================*/
 .pagination-table {
     width: 100%;
     text-align: center;
