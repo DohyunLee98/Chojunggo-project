@@ -10,14 +10,18 @@ $(document).ready(function() {
 });
 
 function payment() {
+	
+	var name = $("#title").text();
+	var price = $("#price").text();
+	
 	IMP.init('imp15547415');
 
 	var paymentData = {
 		pg: 'kakaopay',  
 		pay_method: 'card',  
 		merchant_uid: 'merchant_' + new Date().getTime(),  
-		name: '결제테스트',
-		amount: 1000, 
+		name: name,
+		amount: price, 
 		buyer_email: 'example@example.com',
 		buyer_name: '홍길동',
 		buyer_tel: '010-1234-5678',

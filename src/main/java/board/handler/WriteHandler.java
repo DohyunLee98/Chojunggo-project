@@ -35,7 +35,7 @@ public class WriteHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		writeService = new WriteService();
-		uploadPath = "C:\\project\\work\\chojunggo4\\src\\main\\webapp\\image\\uploadedImages";
+		uploadPath = "C:\\project\\work\\chojunggo5\\src\\main\\webapp\\image\\uploadedImages";
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 

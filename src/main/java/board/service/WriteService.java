@@ -48,12 +48,12 @@ public class WriteService {
 			        }
 				String time = currentTime.toString();
 				String renamedFile = time+ ext; 
-				File tempFile = new File(uploadPath + "/" + renamedFile);
+				File tempFile = new File(uploadPath + "/" + renamedFile); // 저장될 이미지 이름 변경
 
 				if (!originFile.renameTo(tempFile)) {
 					System.err.println("파일명 변경 실패");
 				}
-				imageList.add(renamedFile);
+				imageList.add(renamedFile); // 리스트 형태로 저장
 			}
 		}
 		return imageList;
