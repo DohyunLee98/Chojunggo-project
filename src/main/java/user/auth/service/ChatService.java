@@ -14,6 +14,7 @@ public class ChatService {
 	public void makeChatRoom(String writerId, String userId, String title) {
 		try(Connection con = ConnectionProvider.getConnection()){
 			String channelKey = chatDAO.selectChannelKey(con);
+			System.out.println(channelKey);
 			if(channelKey == null) {
 				System.out.println("이용가능한 채팅방이 없습니다.");
 			}

@@ -13,14 +13,13 @@ import user.auth.service.ChatRoom;
 public class ChatDAO {
 
 	public String selectChannelKey(Connection con) throws SQLException{
-		String channelKey = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			ps = con.prepareStatement("select channel_key from channel where running = 'n'");
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				return channelKey;
+				return rs.getString(1);
 			}
 		} finally {
 			JdbcUtil.close(rs);
@@ -73,7 +72,7 @@ public class ChatDAO {
 	public void updateChannelRunning(Connection con, String channelKey) throws SQLException{
 		PreparedStatement ps = null;
 		try {
-			ps = con.prepareStatement("update channel set running = 'y' where channel_key = '?'");
+			ps = con.prepareStatement("update channel set running = 'y' where channel_key = ?");
 			ps.setString(1, channelKey);
 			ps.executeUpdate();
 			
