@@ -44,6 +44,7 @@
 		<filter-name>LoginCheckFilter</filter-name>
 		<url-pattern>/write.do</url-pattern>
 		<url-pattern>/chat.do</url-pattern>
+		<url-pattern>/recent.do</url-pattern>
 </filter-mapping>
 </web-app>
 

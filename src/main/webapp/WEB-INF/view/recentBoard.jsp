@@ -16,20 +16,17 @@
 	<%@ include file="/includes/header.jsp"%>
 	<div class="container">
 		<div class="header">
-			<h2>최근 본 상품</h2>
+			<h4>최근 본 상품</h4>
 		</div>
 		<c:if test="${not empty board}">
 		<c:forEach var="board" items="${board}">
 			<div class="order-info">
-				<div class = "date">
-					"${board.createdDate }"
-				</div>
 			</div>
-			<a href="#" class="product-info">
-				<img src="/image/uploadedImages/${board.thumbName }" class="product-image">
+			<a href="/read.do?no=${board.boardNum}" class="product-info">
+				<img src="/image/uploadedImages/${board.thumbName}" class="product-image">
 				<div class="product-details">
 					<h3>${board.title }</h3>
-					<p>가격  : ${board.price }</p>
+					<p>가격  : ${board.price }원</p>
 				</div>
 			</a>
 		</c:forEach>

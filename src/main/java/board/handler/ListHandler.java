@@ -14,7 +14,7 @@ public class ListHandler implements CommandHandler{
     public String process(HttpServletRequest req, HttpServletResponse res)  {
         String pageNoVal = req.getParameter("pageNo");
         String category = req.getParameter("category");
-        String sort = req.getParameter("sort");
+        String sort = req.getParameter("sorting");
         
         int pageNo = 1;
         if (pageNoVal != null) {

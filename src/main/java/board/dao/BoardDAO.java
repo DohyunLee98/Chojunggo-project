@@ -315,18 +315,17 @@ public class BoardDAO {
 	public List<BoardDetail> select(Connection con, int startRow, int size, String category, String sort) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		category = removeAllWhitespace(category);
 		try {
 			String query = makeQuery(category, sort);
 			int parametersCNT = countParameters(query);
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(parametersCNT, size);
 			pstmt.setInt(parametersCNT-1, startRow);
-			
-			if(category == null || category.equals("all")) {	}
+			if(category == null || category.length()==0 || category.equals("all")) {	}
 			else {
 				pstmt.setString(parametersCNT-2, category);
 			}
-
 			rs = pstmt.executeQuery();
 			List<BoardDetail> result = new ArrayList<>();
 			while (rs.next()) {
@@ -339,9 +338,15 @@ public class BoardDAO {
 		}
 	}
 
+    private String removeAllWhitespace(String input) {
+        if (input == null) {
+            return null;
+        }
+        return input.replaceAll("\\s+", "");
+    }
 	private String makeQuery(String category, String sort) {
 		String query = "select * from board_detail";
-		if(category == null || category.equals("all")) {	}
+		if(category == null || category.length()==0|| category.equals("all")) {	}
 		else {
 			query += " where category = ?";
 		}
@@ -352,7 +357,6 @@ public class BoardDAO {
 			query += sort;
 		}
 		query += " limit ?, ?";
-		
 		return query;
 	}
 	
@@ -393,4 +397,52 @@ public class BoardDAO {
 		return 0;
 	}
 
+	 private String searchQuery(String category, String sort, String searchWord) {
+	        String query = "select * from board_detail where board_num=(select board_num from board_detail where title like %searchWord% or content like %searchWord%)";
+
+	        if(category == null || category.equals("all")) {    }
+	        else {
+	            query += " category = ?";
+	        }
+
+	        if(sort == null) {
+	            query += " order by board_num desc";
+	        }else {
+	            query += sort;
+	        }
+	        query += " limit ?, ?";
+
+	        return query;
+	    }
+
+
+
+	    public List<BoardDetail> search(Connection con, int startRow, int size, String category, String sort, String searchWord) throws SQLException {
+	        PreparedStatement pstmt = null;
+	        ResultSet rs = null;
+	        try {
+
+	            String query = searchQuery(category, sort, searchWord);
+
+	            int parametersCNT = countParameters(query);
+	            pstmt = con.prepareStatement(query);
+	            pstmt.setInt(parametersCNT, size);
+	            pstmt.setInt(parametersCNT-1, startRow);
+
+	            if(category == null  || category.equals("all")) {    }
+	            else {
+	                pstmt.setString(parametersCNT-2, category);
+	            }
+
+	            rs = pstmt.executeQuery();
+	            List<BoardDetail> result = new ArrayList<>();
+	            while (rs.next()) {
+	                result.add(convertBoardDetail(rs));
+	            }
+	            return result;
+	        } finally {
+	            JdbcUtil.close(rs);
+	            JdbcUtil.close(pstmt);
+	        }
+	    }
 }

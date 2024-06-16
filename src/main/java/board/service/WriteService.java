@@ -41,6 +41,11 @@ public class WriteService {
 				String originFileName = originFile.getName();
 				String ext = originFileName.substring(originFileName.lastIndexOf("."));
 				Long currentTime = System.currentTimeMillis();
+				 try {
+			            Thread.sleep(100);  // 0.1초 동안 대기
+			        } catch (InterruptedException e) {
+			            e.printStackTrace();
+			        }
 				String time = currentTime.toString();
 				String renamedFile = time+ ext; 
 				File tempFile = new File(uploadPath + "/" + renamedFile);

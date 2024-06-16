@@ -1,5 +1,6 @@
 package user.auth.command;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,18 +26,22 @@ public class ChatHandler implements CommandHandler {
 		}
 	}
 
-	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+	private String processForm(HttpServletRequest req, HttpServletResponse res) {
 		String userId = ((User2) req.getSession().getAttribute("login")).getId(); 
 		List<ChatRoom> chatRooms = showChatRoom(userId);
 		req.setAttribute("chatList", chatRooms);
 		return "/WEB-INF/view/chat.jsp";
 	}
 
-	private String processForm(HttpServletRequest req, HttpServletResponse res) {
+	private String processSubmit(HttpServletRequest req, HttpServletResponse res) {
+		try {
+			req.setCharacterEncoding("utf-8");
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		String writerId = req.getParameter("writer");
 		String title = req.getParameter("title");
 		String userId = ((User2) req.getSession().getAttribute("login")).getId();
-		
 		chatService.makeChatRoom(writerId, userId, title);
 		
 		List<ChatRoom> chatRooms = showChatRoom(userId);
