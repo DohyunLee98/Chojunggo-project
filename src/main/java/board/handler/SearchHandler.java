@@ -13,15 +13,13 @@ public class SearchHandler implements CommandHandler{
     @Override
     public String process(HttpServletRequest req, HttpServletResponse res)  {
         String pageNoVal = req.getParameter("pageNo");
-        String category = req.getParameter("category");
-        String sort = req.getParameter("sort");
         String searchWord = req.getParameter("searchWord");  
         
         int pageNo = 1;
         if (pageNoVal != null) {
             pageNo = Integer.parseInt(pageNoVal);
         }
-        ListPage listPage = searchService.getListPage(pageNo, category, sort,searchWord);
+        ListPage listPage = searchService.getListPage(pageNo,searchWord);
         req.setAttribute("boardPage", listPage);
         return "/WEB-INF/view/list.jsp";
     }

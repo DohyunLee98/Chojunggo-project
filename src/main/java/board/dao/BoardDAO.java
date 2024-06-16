@@ -397,47 +397,28 @@ public class BoardDAO {
 		return 0;
 	}
 
-	 private String searchQuery(String category, String sort, String searchWord) {
-	        String query = "select * from board_detail where board_num=(select board_num from board_detail where title like %searchWord% or content like %searchWord%)";
 
-	        if(category == null || category.equals("all")) {    }
-	        else {
-	            query += " category = ?";
-	        }
-
-	        if(sort == null) {
-	            query += " order by board_num desc";
-	        }else {
-	            query += sort;
-	        }
-	        query += " limit ?, ?";
-
-	        return query;
-	    }
-
-
-
-	    public List<BoardDetail> search(Connection con, int startRow, int size, String category, String sort, String searchWord) throws SQLException {
+	    public List<BoardDetail> search(Connection con, int startRow, int size, String searchWord) throws SQLException {
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;
 	        try {
-
-	            String query = searchQuery(category, sort, searchWord);
+	        	System.out.println("DAO SEARCH");
+	        	 String query = "select * from board_detail where board_num="
+	        	 		+ "(select board_num from board_detail where title like ? union select board_num from board_content where content like ?) limit ?, ?";
 
 	            int parametersCNT = countParameters(query);
 	            pstmt = con.prepareStatement(query);
 	            pstmt.setInt(parametersCNT, size);
 	            pstmt.setInt(parametersCNT-1, startRow);
-
-	            if(category == null  || category.equals("all")) {    }
-	            else {
-	                pstmt.setString(parametersCNT-2, category);
-	            }
-
+	            pstmt.setString(parametersCNT - 2, '%' +searchWord +'%');
+	            pstmt.setString(parametersCNT-3, '%' +searchWord +'%');
 	            rs = pstmt.executeQuery();
 	            List<BoardDetail> result = new ArrayList<>();
 	            while (rs.next()) {
 	                result.add(convertBoardDetail(rs));
+	            }
+	            for(int i =0; i < result.size(); i++) {
+	            	System.out.println(result.get(i));
 	            }
 	            return result;
 	        } finally {
