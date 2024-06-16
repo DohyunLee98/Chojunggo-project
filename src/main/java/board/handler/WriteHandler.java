@@ -35,7 +35,7 @@ public class WriteHandler implements CommandHandler {
 
 	private String processSubmit(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		writeService = new WriteService();
-		uploadPath = "C:\\Users\\user\\git\\Chojunggo-project\\src\\main\\webapp\\image\\uploadedImages";
+		uploadPath = "C:\\project\\work\\chojunggo4\\src\\main\\webapp\\image\\uploadedImages";
 		Map<String, Boolean> errors = new HashMap<>();
 		request.setAttribute("errors", errors);
 
@@ -66,7 +66,7 @@ public class WriteHandler implements CommandHandler {
 			deliveryFee = Integer.parseInt(multi.getParameter("deliveryFee"));
 		}
 		
-		String location = multi.getParameter("h_area1") + multi.getParameter("h_area2");
+		String location = multi.getParameter("h_area1") + " "+ multi.getParameter("h_area2");
 		List<String> imageList = writeService.uploadImages(multi, writer, uploadPath);
 		if (title == null || title.length() == 0) {
 			errors.put("title", true);

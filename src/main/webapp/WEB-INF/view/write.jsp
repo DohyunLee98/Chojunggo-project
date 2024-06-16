@@ -128,13 +128,6 @@
                                 <input type="text" id="regular-shipping" name="deliveryFee" class="small-input" placeholder="입력"> 
                                 <span class="small-label">원</span>
                             </div>
-                            <div class="shipping-option-group">
-                                <label class="small-label">GS반값 · CU알뜰택배</label>
-                                <input type="radio" name="gsCu" value="possible"> 
-                                <span class="small-label">가능</span> 
-                                <input type="radio" name="gsCu" value="not-possible"> 
-                                <span class="small-label">불가</span>
-                            </div>
                         </div>
                     </div>
                 </div>

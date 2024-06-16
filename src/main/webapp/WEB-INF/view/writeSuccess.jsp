@@ -33,7 +33,7 @@
 		<input type = "submit" value = "전체상품 목록" 
 			onclick = " location.href = 'list.do' " class = "goList">
 		<input type = "submit" value = "작성한 글 보기" 
-			onclick = " location.href = 'read.do?${boardNum}' " class = "goRead">
+			onclick = " location.href = 'read.do?no=${boardNum}' " class = "goRead">
 	
 	</div>
 </div>

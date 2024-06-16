@@ -33,10 +33,10 @@
 							
 						<!-- 작은 이미지 박스들 -->
 						<div id="smallImg" class="small-images">
-							<div class="small-image-box"><img id="small1" src="image/login.png" ></div>
-							<div class="small-image-box"><img id="small2" src="image/logout.png"></div>
-							<div class="small-image-box"><img id="small3" src="image/right.png" ></div>
-							<div class="small-image-box"><img id="small4" src="image/left.png" ></div>
+						<c:forEach var="board" items="${assemble.photo.imageName }">
+						
+							<div class="small-image-box"><img src="/image/uploadedImages/${board}"></div>
+						</c:forEach>
 						</div>
 					</div>
 					<!-- end .product1 -->
@@ -46,12 +46,12 @@
 						<div class="productContent">
 
 							<div class="title">
-								<h3>${assemble.boardDetail.title}</h3>
-								<h2>${assemble.boardDetail.price}원</h2>
+								<h3 id=title>${assemble.boardDetail.title}</h3>
+								<h2 id=price>${assemble.boardDetail.price}원</h2>
 							</div>
 							
 							<div class = "author">
-								<p>작 성 자 : ${user2.nickname}</p>
+								<p>작 성 자 : ${assemble.board.user2.nickname}</p>
 							</div>
 
 							<hr>
@@ -88,8 +88,8 @@
 										<!-- 버튼 누를 때 챗점두 -->
 										<img src="image/chat2.png"> <span>채팅</span>
 									</button>
-									<input type="hidden" name="writer" value="${board.id}">
-									<input type="hidden" name="title" value="${board.title}">
+									<input type="hidden" name="writer" value="${assemble.board.user2.id}">
+									<input type="hidden" name="title" value="${assemble.boardDetail.title}">
 								</form>
 							</div>
 							<!-- end #chat -->
