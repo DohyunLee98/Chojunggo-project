@@ -12,10 +12,10 @@ public class SearchService {
 	private int size = 16;
 	BoardDAO boardDAO = new BoardDAO();
 	
-	public ListPage getListPage(int pageNum, String category, String sort,String searchWord) {
+	public ListPage getListPage(int pageNum, String searchWord) {
 		try(Connection con = ConnectionProvider.getConnection()){
 			int total = boardDAO.selectCount(con);
-			List<BoardDetail> content = boardDAO.search(con, (pageNum -1) * size, size, category, sort,searchWord);
+			List<BoardDetail> content = boardDAO.search(con, (pageNum -1) * size, size, searchWord);
 			return new ListPage(total, pageNum, size, content);
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());

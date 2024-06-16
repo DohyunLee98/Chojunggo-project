@@ -22,8 +22,8 @@
 			
 			<form id="searchForm" method="get" action="/list.do">
 			<div class="searchbar">
-				<input name="searchWord" type="text" placeholder="상품명, 지역명 입력">
-				<img id="search" class="search" src="image/search.png">
+				<input name="searchWord" type="text" placeholder="제목 or 내용 입력">
+				<img id="search" class="search" src="image/search.png" onclick="search()">
 			</div>
 			</form>
 	
@@ -86,6 +86,13 @@
 
 	    lastScrollTop = scrollTop;
 	});
+	
+	// 검색
+	/* var searchWord = document.getElementById("searchWord").value;
+	
+	var url = "search.do?searchWord=" +encodeURIComponent(searchWord);
+	location.href = url; */
+	
 </script>
 
 </body>
