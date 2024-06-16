@@ -10,17 +10,16 @@
 <meta charset="UTF-8">
 <title>초중고</title>
 <link rel="stylesheet" href="/css/list.css">
-
+<script>
+function sorting() {
+    var category = document.getElementById("category").value;
+    var sorting = document.getElementById("sorting").value;
+    var url = "list.do?category=" + encodeURIComponent(category) + "&sorting=" + encodeURIComponent(sorting);
+    location.href = url;
+}
+</script>
 </head>
 <body>
-	<script>
-		function category() {
-			var select = document.getElementById("category");
-			var selectedValue = select.options[select.selectedIndex].value;
-			var url = '/list.do?category=' + encodeURIComponent(selectedValue);
-			window.location.href = url;
-		};
-	</script>
 	<%@ include file="/includes/header.jsp"%>
 	<div class="container">
 		<div class="header">
@@ -29,9 +28,9 @@
 			
 			<div class = "labelBox">
 				<label> <span>카테고리</span> 
-				<select id="category" name="type" onchange="category()">
+				<select id="category" name="type" >
 				
-						<option value=''>옵션 선택</option>
+						<option value='all'>옵션 선택</option>
 						<option value='all'>전체 보기</option>
 						<option value='digital'>디지털</option>
 						<option value='clothes'>의류</option>
@@ -46,19 +45,18 @@
 				</label>
 			
 				<label class = "labelRight"> <span>정렬</span> 
-				<select id="sorting" name="sorting"
-					onchange="sorting()">
-						<option value="order by board_num desc">최신 순</option>
-						<option value="order by board_num">오래된 순</option>
-						<option value="order by price desc">높은 가격 순</option>
-						<option value="order by price">낮은 가격 순</option>
+				<select id="sorting" name="sorting">
+						<option value=" order by board_num desc">최신 순</option>
+						<option value=" order by board_num">오래된 순</option>
+						<option value=" order by price desc">높은 가격 순</option>
+						<option value=" order by price">낮은 가격 순</option>
 	
 				</select>
 				</label>
 				
 				<div class = "btnBox">
 					<button type = "button" name = "btn"
-						onclick = "location.href = '' " id = "btn" >검색</button>
+						onclick = "sorting()" id = "btn" >검색</button>
 				</div>
 				
 			</div><!-- end .labelBox -->
@@ -69,7 +67,7 @@
 				<div class="product-card">
 					<div class="product-wrapper">
 						<div class="image-wrapper">
-							<img src="image/uploadedImages/${board.thumbName}" width="194"
+							<img src="/image/uploadedImages/${board.thumbName}" width="194"
 								height="194" alt="이미지 없음">
 							<div class="badge-area"></div>
 							<div class="overlay"></div>
