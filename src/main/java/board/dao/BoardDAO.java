@@ -402,9 +402,9 @@ public class BoardDAO {
 	        PreparedStatement pstmt = null;
 	        ResultSet rs = null;
 	        try {
-	        	System.out.println("DAO SEARCH");
-	        	 String query = "select * from board_detail where board_num="
-	        	 		+ "(select board_num from board_detail where title like ? union select board_num from board_content where content like ?) limit ?, ?";
+	        	 String query =  "select * from board_detail where board_num IN "
+		        	 		+ "(select board_num from board_detail where title like ? union select board_num from board_content where content like ?) limit ?, ?"
+		        	 		+ "order by board_num desc";
 
 	            int parametersCNT = countParameters(query);
 	            pstmt = con.prepareStatement(query);
